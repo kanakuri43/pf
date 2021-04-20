@@ -1,0 +1,589 @@
+﻿<mah:MetroWindow x:Class="SalesEntry.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="Katekero" 
+        TitleCharacterCasing="Normal"
+        Height="600" Width="1000"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen"
+        WindowTransitionsEnabled="False">
+    <Grid>
+        <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" />-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Background="RoyalBlue" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <TextBlock Text="売上登録" 
+                   Grid.Column="0"
+                   Foreground="White"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Margin="10,0,0,0"/>
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+
+            <!--header-->
+            <Grid Grid.Row="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <!--heder.1-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="AliceBlue"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="7"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+
+                    <TextBlock Text="伝票番号"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Column="0"/>
+                    <TextBox Text="123456789" 
+                             Grid.Column="1"/>
+
+                    <TextBlock Text="伝票日付"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Column="2"/>
+                    <DatePicker SelectedDate="{Binding Source={x:Static System:DateTime.Today}, Mode=OneTime}"
+                                Grid.Column="3"/>
+
+                    <TextBlock Text="受注番号"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Column="4"/>
+                    <TextBox Text="123456789" 
+                             Grid.Column="5"/>
+
+                    <TextBlock Text="消費税率"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Column="6"/>
+                    <ComboBox Text="123456789" 
+                              Grid.Column="7" 
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="10%"/>
+                    </ComboBox>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <!--heder.2-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="AliceBlue"
+                            Grid.ColumnSpan="2"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+
+                    <TextBlock Text="得意先"
+                               TextAlignment="Center"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1"
+                             Text="999"/>
+                    <TextBox Grid.Column="2"
+                             IsReadOnly="true"
+                             Text="オビサン株式会社"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <!--heder.3-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="1"
+                             TextAlignment="Left"
+                             IsReadOnly="true"
+                             Text="990-8668"/>
+                    <TextBox Grid.Column="2"
+                             TextAlignment="Left"
+                             IsReadOnly="true"
+                             Text="山形県山形市"/>
+                    <TextBox Grid.Column="3"
+                             IsReadOnly="true"
+                             Text="023-633-5511"/>
+
+                </Grid>
+            </Grid>
+
+            <!--separator-->
+            <!--<Border Grid.Row="1"
+                    BorderBrush="RoyalBlue"
+                    BorderThickness="1"/>-->
+
+            <!--detail-->
+            <Grid Grid.Row="1" Margin="4,10,4,4">
+
+                <!-- DataGridの定義 -->
+
+                <DataGrid x:Name="uxDataGrid" 
+                  HeadersVisibility="Column" 
+                  CanUserAddRows="False" 
+                  AutoGenerateColumns="False" 
+                  ItemsSource="{Binding}" >
+
+                    <!-- DataGrid全体のヘッダスタイル設定 -->
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+
+                        <!-- 日付項目の表示 -->
+                        <DataGridTextColumn Header="日付" Width="100" Binding="{Binding Path=日付,StringFormat={}{0:yyyy年MM月dd日}}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- メーカー、商品コード、商品名、の3段表示 -->
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="メーカー"/>
+                                    <TextBlock Text="商品コード"/>
+                                    <TextBlock Text="商品名"/>
+                                </StackPanel>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate >
+                                    <StackPanel Orientation="Vertical" Margin="0" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding メーカー}" Padding="5,0,5,0" />
+                                        <Border BorderThickness="0,0,0,1"  />
+                                        <TextBlock Text="{Binding 商品コード}" Padding="5,0,5,0" />
+                                        <Border BorderThickness="0,0,0,1"  BorderBrush="Gray"/>
+                                        <TextBlock Text="{Binding 商品名}" Padding="5,0,5,0" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!-- 単価、数量の2段表示 -->
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="単価"/>
+                                    <TextBlock Text="数量"/>
+                                </StackPanel>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50*"/>
+                                            <RowDefinition Height="1"/>
+                                            <RowDefinition Height="50*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="{Binding 単価,StringFormat={}{0:N}}"  TextAlignment="Right" Padding="2"/>
+                                        <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="Gray"/>
+                                        <TextBlock Grid.Row="2" Text="{Binding 数量}" TextAlignment="Right" Padding="2"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!-- 単価、数量の2段表示 -->
+                        <DataGridTextColumn Header="合計金額" Width="100" Binding="{Binding Path=合計,StringFormat={}{0:N}}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <!-- センサー、画素数、サイズの2列2段表示-->
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.Header>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="センサー／画素数"/>
+                                    <TextBlock Text="サイズ" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50*"/>
+                                            <RowDefinition Height="1"/>
+                                            <RowDefinition Height="50*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="1"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding センサー}"  Padding="5,0,5,0" />
+                                            <Border Grid.Column="1" BorderThickness="1,0,0,0"  BorderBrush="Gray"/>
+                                            <TextBlock Grid.Column="2" Text="{Binding 画素数,StringFormat={}{0}万画素}" Padding="5,0,5,0" />
+                                        </Grid>
+                                        <Border Grid.Row="1" BorderThickness="0,0,0,1"  BorderBrush="Gray"/>
+                                        <TextBlock Text="{Binding サイズ}" Grid.Row="2"  TextAlignment="Center" Padding="2"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+
+            <!--label test-->
+            <StackPanel Grid.Row="2" Orientation="Vertical">
+                <Grid Height="30"
+                  VerticalAlignment="top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="450"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="1"/>
+                    <Border Grid.Column="1"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="0,1,1,1"/>
+                    <Border Grid.Column="2"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="0,1,1,1"/>
+                    <Border Grid.Column="3"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="0,1,1,1"/>
+                    <Border Grid.Column="4"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="0,1,1,1"/>
+                    <Border Grid.Column="5"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="0,1,1,1"/>
+                    <Border Grid.Column="6"
+                        Background="AliceBlue"
+                        BorderBrush="RoyalBlue"
+                        BorderThickness="0,1,1,1"/>
+                    <TextBlock Grid.Column="0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="行"/>
+                    <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="商品"/>
+                    <TextBlock Grid.Column="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="数量"/>
+                    <TextBlock Grid.Column="3"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="単位"/>
+                    <TextBlock Grid.Column="4"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="原価"/>
+                    <TextBlock Grid.Column="5"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="売価"/>
+                    <TextBlock Grid.Column="6"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Text="金額"/>
+                </Grid>
+                <Grid Grid.Row="2"
+                      Height="30"
+                      VerticalAlignment="top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="450"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0" 
+                             Text="1"
+                             TextAlignment="Right"/>
+                    <TextBox Grid.Column="1" 
+                             Text="MO-150-MC-BK ハイマッキー"/>
+                    <TextBox Grid.Column="2" 
+                             Text="100"
+                             TextAlignment="Right"/>
+                    <TextBox Grid.Column="3" 
+                             Text="個"  />
+                    <TextBox Grid.Column="4" 
+                             Text="80"                             
+                             TextAlignment="Right"/>
+                    <TextBox Grid.Column="5" 
+                             Text="100"                             
+                             TextAlignment="Right"/>
+                    <TextBox Grid.Column="6" 
+                             Text="1000"                             
+                             TextAlignment="Right"/>
+                </Grid>
+            </StackPanel>
+
+            <!--separator-->
+            <Border Grid.Row="3"
+                    BorderBrush="RoyalBlue"
+                    BorderThickness="1"/>
+
+            <!--footer-->
+            <Grid Grid.Row="4" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="600"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0"/>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Background="AliceBlue"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="4"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+
+                        <TextBlock Text="伝票摘要" 
+                                   VerticalAlignment="Center"
+                                   Grid.Column="0" 
+                                   TextAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.ColumnSpan="2" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Background="AliceBlue"
+                            Grid.Row="2"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+
+                        <TextBlock Text="伝票発行" 
+                                   VerticalAlignment="Center"
+                                   Grid.Column="0" 
+                                   TextAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Column="1">
+                            <CheckBox Content="納品書" 
+                                      Margin="10,0,0,0"
+                                      IsChecked="True"/>
+                            <CheckBox Content="納品書（控）" 
+                                      Margin="10,0,0,0"
+                                      IsChecked="True"/>
+                            <CheckBox Content="受領書" 
+                                      Margin="10,0,0,0"
+                                      IsChecked="True"/>
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="AliceBlue"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="4"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+                    <Border Background="AliceBlue"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="4"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+                    <Border Background="AliceBlue"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="4"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,0,0,1"/>
+
+
+                    <TextBlock Text="小計"  
+                               Grid.Row="0" 
+                               Grid.Column="0" 
+                               TextAlignment="Center"
+                               VerticalAlignment="Center" />
+                    <TextBox Grid.Row="0"
+                               Grid.Column="1" 
+                               Text="1,000" 
+                               BorderThickness="0,0,0,1"
+                               TextAlignment="Right"/>
+
+
+                    <TextBlock Text="消費税" 
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="1" 
+                               Grid.Column="0"/>
+                    <TextBox Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="100" 
+                               BorderThickness="0,0,0,1"
+                               TextAlignment="Right"/>
+
+                    <TextBlock Text="税込計" 
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Grid.Row="2" 
+                               Grid.Column="0"/>
+                    <TextBox   Grid.Row="2" 
+                               Grid.Column="1" 
+                               Text="1,100" 
+                               BorderThickness="0,0,0,1"
+                               TextAlignment="Right"/>
+
+
+                    <TextBlock Text="小計"  
+                               Grid.Row="0" 
+                               Grid.Column="2" 
+                               TextAlignment="Center"
+                               VerticalAlignment="Center" />
+                    <TextBox Grid.Row="0"
+                               Grid.Column="3" 
+                               Text="1,000" 
+                               BorderThickness="0,0,0,1"
+                               TextAlignment="Right"/>
+
+                    <TextBlock Text="消費税" 
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="1" 
+                               Grid.Column="2"/>
+                    <TextBox Grid.Row="1" 
+                               Grid.Column="3" 
+                               Text="100" 
+                               BorderThickness="0,0,0,1"
+                               TextAlignment="Right"/>
+
+                    <TextBlock Text="税込計" 
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               Grid.Row="2" 
+                               Grid.Column="2"/>
+                    <TextBox   Grid.Row="2" 
+                               Grid.Column="3" 
+                               Text="1,100" 
+                               BorderThickness="0,0,0,1"
+                               TextAlignment="Right"/>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--function keys-->
+        <Grid Background="RoyalBlue" 
+              Grid.Row="2" >
+            <StackPanel Orientation="Horizontal">
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="検索" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="登録" 
+                        Width="90" 
+                        BorderThickness="1"
+                        Margin="10,0,0,0"
+                        Style="{DynamicResource MahApps.Styles.Button.Square}" />
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="終了" 
+                        Width="90" 
+                        BorderThickness="1"
+                        Margin="10,0,0,0"
+                        Style="{DynamicResource MahApps.Styles.Button.Square}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</mah:MetroWindow>
