@@ -24,5 +24,13 @@ namespace MainMenu.Views
         {
             InitializeComponent();
         }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            var f = new MainWindow();
+            f.Show();
+            this.Close();
+
+        }
     }
 }

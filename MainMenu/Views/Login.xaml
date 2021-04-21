@@ -4,13 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:local="clr-namespace:MainMenu.Views"
+        xmlns:local="clr-namespace:MainMenu.ViewModels"
         mc:Ignorable="d"
         Title="Login" 
         Height="450" Width="350"
         TitleCharacterCasing="Normal"
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:LoginViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -90,7 +93,7 @@
                         Background="RoyalBlue"
                         Margin="0,50,0,0"
                         IsDefault="True"
-                        mah:ControlsHelper.ContentCharacterCasing="Normal" />
+                        mah:ControlsHelper.ContentCharacterCasing="Normal" Click="loginButton_Click" />
 
 
 
