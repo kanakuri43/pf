@@ -93,7 +93,8 @@
                         Background="RoyalBlue"
                         Margin="0,50,0,0"
                         IsDefault="True"
-                        mah:ControlsHelper.ContentCharacterCasing="Normal" Click="loginButton_Click" />
+                        mah:ControlsHelper.ContentCharacterCasing="Normal" 
+                        Command="{Binding LoginCommand}" />
 
 
 
