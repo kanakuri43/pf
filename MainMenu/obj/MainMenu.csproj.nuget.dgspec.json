@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\repos\\pf_bak2\\MainMenu\\MainMenu.csproj": {}
+    "C:\\source\\repos\\pf\\MainMenu\\MainMenu.csproj": {}
   },
   "projects": {
-    "C:\\source\\repos\\pf_bak2\\MainMenu\\MainMenu.csproj": {
+    "C:\\source\\repos\\pf\\MainMenu\\MainMenu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\repos\\pf_bak2\\MainMenu\\MainMenu.csproj",
+        "projectUniqueName": "C:\\source\\repos\\pf\\MainMenu\\MainMenu.csproj",
         "projectName": "MainMenu",
-        "projectPath": "C:\\source\\repos\\pf_bak2\\MainMenu\\MainMenu.csproj",
+        "projectPath": "C:\\source\\repos\\pf\\MainMenu\\MainMenu.csproj",
         "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\repos\\pf_bak2\\MainMenu\\obj\\",
+        "outputPath": "C:\\source\\repos\\pf\\MainMenu\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

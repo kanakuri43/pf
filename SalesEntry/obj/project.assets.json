@@ -854,11 +854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\repos\\pf_bak2\\SalesEntry\\SalesEntry.csproj",
+      "projectUniqueName": "C:\\source\\repos\\pf\\SalesEntry\\SalesEntry.csproj",
       "projectName": "SalesEntry",
-      "projectPath": "C:\\source\\repos\\pf_bak2\\SalesEntry\\SalesEntry.csproj",
+      "projectPath": "C:\\source\\repos\\pf\\SalesEntry\\SalesEntry.csproj",
       "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-      "outputPath": "C:\\source\\repos\\pf_bak2\\SalesEntry\\obj\\",
+      "outputPath": "C:\\source\\repos\\pf\\SalesEntry\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

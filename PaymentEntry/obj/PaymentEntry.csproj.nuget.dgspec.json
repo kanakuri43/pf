@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\repos\\pf_bak2\\PaymentEntry\\PaymentEntry.csproj": {}
+    "C:\\source\\repos\\pf\\PaymentEntry\\PaymentEntry.csproj": {}
   },
   "projects": {
-    "C:\\source\\repos\\pf_bak2\\PaymentEntry\\PaymentEntry.csproj": {
+    "C:\\source\\repos\\pf\\PaymentEntry\\PaymentEntry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\repos\\pf_bak2\\PaymentEntry\\PaymentEntry.csproj",
+        "projectUniqueName": "C:\\source\\repos\\pf\\PaymentEntry\\PaymentEntry.csproj",
         "projectName": "PaymentEntry",
-        "projectPath": "C:\\source\\repos\\pf_bak2\\PaymentEntry\\PaymentEntry.csproj",
+        "projectPath": "C:\\source\\repos\\pf\\PaymentEntry\\PaymentEntry.csproj",
         "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\repos\\pf_bak2\\PaymentEntry\\obj\\",
+        "outputPath": "C:\\source\\repos\\pf\\PaymentEntry\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

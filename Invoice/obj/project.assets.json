@@ -854,11 +854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\repos\\pf_bak2\\Invoice\\Invoice.csproj",
+      "projectUniqueName": "C:\\source\\repos\\pf\\Invoice\\Invoice.csproj",
       "projectName": "Invoice",
-      "projectPath": "C:\\source\\repos\\pf_bak2\\Invoice\\Invoice.csproj",
+      "projectPath": "C:\\source\\repos\\pf\\Invoice\\Invoice.csproj",
       "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-      "outputPath": "C:\\source\\repos\\pf_bak2\\Invoice\\obj\\",
+      "outputPath": "C:\\source\\repos\\pf\\Invoice\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
