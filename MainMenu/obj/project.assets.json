@@ -844,8 +844,7 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "MahApps.Metro >= 2.4.4",
-      "Prism.Unity >= 8.0.0.1909",
-      "Prism.Wpf >= 8.0.0.1909"
+      "Prism.Unity >= 8.0.0.1909"
     ]
   },
   "packageFolders": {
@@ -855,11 +854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\repos\\pf\\MainMenu\\MainMenu.csproj",
+      "projectUniqueName": "C:\\source\\repos\\pf_bak2\\MainMenu\\MainMenu.csproj",
       "projectName": "MainMenu",
-      "projectPath": "C:\\source\\repos\\pf\\MainMenu\\MainMenu.csproj",
+      "projectPath": "C:\\source\\repos\\pf_bak2\\MainMenu\\MainMenu.csproj",
       "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-      "outputPath": "C:\\source\\repos\\pf\\MainMenu\\obj\\",
+      "outputPath": "C:\\source\\repos\\pf_bak2\\MainMenu\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -892,10 +891,6 @@
             "version": "[2.4.4, )"
           },
           "Prism.Unity": {
-            "target": "Package",
-            "version": "[8.0.0.1909, )"
-          },
-          "Prism.Wpf": {
             "target": "Package",
             "version": "[8.0.0.1909, )"
           }

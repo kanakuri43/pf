@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         WindowTransitionsEnabled="False">
     <Grid>
-        <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" />-->
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
@@ -328,6 +328,7 @@
                         Style="{DynamicResource MahApps.Styles.Button.Square}"/>
             </StackPanel>
         </Grid>
+        <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" />-->
     </Grid>
 
 </mah:MetroWindow>

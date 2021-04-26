@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\repos\\pf\\Invoice\\Invoice.csproj": {}
+    "C:\\source\\repos\\pf_bak2\\Invoice\\Invoice.csproj": {}
   },
   "projects": {
-    "C:\\source\\repos\\pf\\Invoice\\Invoice.csproj": {
+    "C:\\source\\repos\\pf_bak2\\Invoice\\Invoice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\repos\\pf\\Invoice\\Invoice.csproj",
+        "projectUniqueName": "C:\\source\\repos\\pf_bak2\\Invoice\\Invoice.csproj",
         "projectName": "Invoice",
-        "projectPath": "C:\\source\\repos\\pf\\Invoice\\Invoice.csproj",
+        "projectPath": "C:\\source\\repos\\pf_bak2\\Invoice\\Invoice.csproj",
         "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\repos\\pf\\Invoice\\obj\\",
+        "outputPath": "C:\\source\\repos\\pf_bak2\\Invoice\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -44,10 +44,6 @@
               "version": "[2.4.4, )"
             },
             "Prism.Unity": {
-              "target": "Package",
-              "version": "[8.0.0.1909, )"
-            },
-            "Prism.Wpf": {
               "target": "Package",
               "version": "[8.0.0.1909, )"
             }

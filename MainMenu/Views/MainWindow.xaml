@@ -16,7 +16,6 @@
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
     <Grid>
-        <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" />-->
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
@@ -118,5 +117,6 @@
         <Grid Background="RoyalBlue" Grid.Row="2">
 
         </Grid>
+        <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" />-->
     </Grid>
 </mah:MetroWindow>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\repos\\pf\\SalesEntry\\SalesEntry.csproj": {}
+    "C:\\source\\repos\\pf_bak2\\SalesEntry\\SalesEntry.csproj": {}
   },
   "projects": {
-    "C:\\source\\repos\\pf\\SalesEntry\\SalesEntry.csproj": {
+    "C:\\source\\repos\\pf_bak2\\SalesEntry\\SalesEntry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\repos\\pf\\SalesEntry\\SalesEntry.csproj",
+        "projectUniqueName": "C:\\source\\repos\\pf_bak2\\SalesEntry\\SalesEntry.csproj",
         "projectName": "SalesEntry",
-        "projectPath": "C:\\source\\repos\\pf\\SalesEntry\\SalesEntry.csproj",
+        "projectPath": "C:\\source\\repos\\pf_bak2\\SalesEntry\\SalesEntry.csproj",
         "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\repos\\pf\\SalesEntry\\obj\\",
+        "outputPath": "C:\\source\\repos\\pf_bak2\\SalesEntry\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -44,10 +44,6 @@
               "version": "[2.4.4, )"
             },
             "Prism.Unity": {
-              "target": "Package",
-              "version": "[8.0.0.1909, )"
-            },
-            "Prism.Wpf": {
               "target": "Package",
               "version": "[8.0.0.1909, )"
             }

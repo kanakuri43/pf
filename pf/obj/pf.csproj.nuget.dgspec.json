@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\repos\\pf\\pf\\pf.csproj": {}
+    "C:\\source\\repos\\pf_bak2\\pf\\pf.csproj": {}
   },
   "projects": {
-    "C:\\source\\repos\\pf\\pf\\pf.csproj": {
+    "C:\\source\\repos\\pf_bak2\\pf\\pf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\repos\\pf\\pf\\pf.csproj",
+        "projectUniqueName": "C:\\source\\repos\\pf_bak2\\pf\\pf.csproj",
         "projectName": "pf",
-        "projectPath": "C:\\source\\repos\\pf\\pf\\pf.csproj",
+        "projectPath": "C:\\source\\repos\\pf_bak2\\pf\\pf.csproj",
         "packagesPath": "C:\\Users\\User3077\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\repos\\pf\\pf\\obj\\",
+        "outputPath": "C:\\source\\repos\\pf_bak2\\pf\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
