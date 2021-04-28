@@ -20,14 +20,15 @@ namespace MainMenu.ViewModels
         public MainWindowViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            //menucommand = new DelegateCommand(menucommandExecute);
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(LoginForm));
 
+            LogoutCommand = new DelegateCommand(LogoutCommandExecute);
+
         }
-        public DelegateCommand menucommand { get; }
-        private void menucommandExecute()
+        public DelegateCommand LogoutCommand { get; }
+        private void LogoutCommandExecute()
         {
-            //_regionManager.RequestNavigate("ContentRegion", nameof(Menu));
+            _regionManager.RequestNavigate("ContentRegion", nameof(LoginForm));
         }
 
     }
