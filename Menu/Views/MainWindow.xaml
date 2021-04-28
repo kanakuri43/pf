@@ -16,11 +16,8 @@
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
     <Grid>
-        <StackPanel>
-            <Button Content="menu"
-                    Command="{Binding menucommand}"/>
-            <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+            
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
 
-        </StackPanel>
     </Grid>
 </mah:MetroWindow>

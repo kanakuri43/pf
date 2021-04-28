@@ -18,6 +18,7 @@ namespace MainMenu
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Menu>();
+            containerRegistry.RegisterForNavigation<LoginForm>();
         }
     }
 }
