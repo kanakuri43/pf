@@ -46,7 +46,8 @@
                          BorderThickness="0"
                          HorizontalContentAlignment="Left"
                          mah:TextBoxHelper.Watermark="1234"
-                         Foreground="White"/>
+                         Foreground="White"
+                         Text="{Binding UserID}"/>
 
                 <Border Height="2"
                         Background="white"/>
@@ -58,15 +59,16 @@
                        Margin="0,20,0,0"
                        Foreground="White"/>
 
-                <PasswordBox x:Name="passwordTextbox" 
-                         FontFamily="Century Gothic"
-                         FontWeight="Bold"
-                         FontSize="16"
-                         Background="Transparent"
-                         BorderThickness="0"
-                         HorizontalContentAlignment="Left"
-                         mah:TextBoxHelper.Watermark="******"
-                         Foreground="White"/>
+                <TextBox x:Name="passwordTextbox" 
+                        FontFamily="Century Gothic"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        HorizontalContentAlignment="Left"
+                        mah:TextBoxHelper.Watermark="******"
+                        Foreground="White"
+                         Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Border Height="2"
                         Background="white"/>
