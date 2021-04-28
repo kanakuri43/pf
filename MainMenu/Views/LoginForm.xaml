@@ -45,6 +45,7 @@
                          Background="Transparent"
                          BorderThickness="0"
                          HorizontalContentAlignment="Left"
+                         mah:TextBoxHelper.Watermark="1234"
                          Foreground="White"/>
 
                 <Border Height="2"
@@ -64,6 +65,7 @@
                          Background="Transparent"
                          BorderThickness="0"
                          HorizontalContentAlignment="Left"
+                         mah:TextBoxHelper.Watermark="******"
                          Foreground="White"/>
 
                 <Border Height="2"
