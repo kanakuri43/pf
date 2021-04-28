@@ -21,7 +21,7 @@ namespace MainMenu.ViewModels
         {
             _regionManager = regionManager;
             //menucommand = new DelegateCommand(menucommandExecute);
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Menu));
+            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(LoginForm));
 
         }
         public DelegateCommand menucommand { get; }
