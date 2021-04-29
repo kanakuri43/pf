@@ -30,7 +30,8 @@
                        HorizontalAlignment="Center"/>
 
             <StackPanel Grid.Row="1" Width="235"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        FocusManager.FocusedElement="{Binding ElementName=userIdTextBox}">
 
                 <Label Content="User ID"
                        FontFamily="Century Gothic"
