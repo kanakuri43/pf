@@ -18,12 +18,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="StaffNameTextBlock" Grid.Column="4"
-                       Foreground="White"
-                       FontSize="12"
-                       Margin="2"
-                       TextAlignment="Right" 
-                       VerticalAlignment="Center"/>
+            <Label x:Name="StaffNameLabel" Grid.Column="4"
+                   Foreground="White"
+                   HorizontalAlignment="Right" 
+                   Content="{Binding Information1}"/>
         </Grid>
 
         <Grid Background="Transparent" 

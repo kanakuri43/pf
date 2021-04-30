@@ -13,10 +13,15 @@ namespace MainMenu.ViewModels
     public class LoginFormViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
-
-        string _plainPassword = string.Empty;
-
+        private string _plainPassword = string.Empty;
         private string _userID = string.Empty;
+        private string _messageString = string.Empty;
+
+        public string MessageString
+        {
+            get { return _messageString; }
+            set { SetProperty(ref _messageString, value); }
+        }
         public string UserID
         {
             get { return _userID; }
@@ -40,9 +45,20 @@ namespace MainMenu.ViewModels
         {
             if (TryLogin(UserID, PlainPassword))
             {
-                // Menu表示
-                _regionManager.RequestNavigate("ContentRegion", nameof(Menu));
 
+                // Menu表示
+                var p = new NavigationParameters();
+                p.Add(nameof(MenuViewModel.OperatorCode), UserID);
+                _regionManager.RequestNavigate("ContentRegion", nameof(Menu), p);
+
+                MessageString = string.Empty;
+                UserID = string.Empty;
+                PlainPassword = string.Empty;
+                Password = string.Empty;
+            }
+            else
+            {
+                MessageString = "User ID または Password が違います。";
             }
         }
 
