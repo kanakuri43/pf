@@ -68,12 +68,12 @@
                         TextAlignment="Center" 
                         VerticalAlignment="Center"/>
 
-            <StackPanel Grid.Column="1" 
-                        Grid.Row="1" 
-                        IsEnabled="True">
-                <Button Content="Demonstration" Height="50" FontSize="16" Margin="4" mah:ControlsHelper.ContentCharacterCasing="Normal"/>
-
-            </StackPanel>
+            <ListBox Grid.Column="1" Grid.Row="1"
+                     SelectedIndex="{Binding Category}"
+                     Background="Transparent">
+                <ListBoxItem Content="Demo" Height="50"/>
+                <ListBoxItem Content="Demo2" Height="50"/>
+            </ListBox>
 
             <Border Grid.Column="2" Grid.Row="0"
                     Background="RoyalBlue"
@@ -90,6 +90,12 @@
                 <Button Content="売上登録" Height="50" FontSize="16" Margin="4" Command="{Binding SalesEntryCommand}" />
                 <Button Content="入金登録" Height="50" FontSize="16" Margin="4" Command="{Binding PaymentEntryCommand}"/>
                 <Button Content="請求管理" Height="50" FontSize="16" Margin="4" Command="{Binding InvoiceCommand}"/>
+                <ListBox Background="Transparent"
+                         SelectedIndex="{Binding Operation}">
+                    <ListBoxItem Content="売上登録" Height="50"/>
+                    <ListBoxItem Content="入金登録" Height="20"/>
+                    <ListBoxItem Content="請求管理" Height="50"/>
+                </ListBox>
 
             </StackPanel>
 

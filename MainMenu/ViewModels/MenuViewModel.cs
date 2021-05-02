@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Prism.Regions;
+using pf.Models;
 
 namespace MainMenu.ViewModels
 {
@@ -21,6 +22,8 @@ namespace MainMenu.ViewModels
             get { return _operatorCode; }
             set { SetProperty(ref _operatorCode, value); }
         }
+        public int Category { get; set; }
+        public int Operation { get; set; }
 
         private string _information1 = string.Empty;
         public string Information1

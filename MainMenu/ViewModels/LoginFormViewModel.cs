@@ -7,6 +7,7 @@ using Prism.Regions;
 using MainMenu.Views;
 using System.Data;
 using System.ComponentModel;
+using pf.Models;
 
 namespace MainMenu.ViewModels
 {
@@ -43,7 +44,8 @@ namespace MainMenu.ViewModels
         public DelegateCommand LoginCommand { get; }
         private void LoginCommandExecute()
         {
-            if (TryLogin(UserID, PlainPassword))
+            Operator o = new Operator(UserID);
+            if (o.TryLogin(PlainPassword))
             {
 
                 // Menu表示
@@ -62,27 +64,27 @@ namespace MainMenu.ViewModels
             }
         }
 
-        private bool TryLogin(string operatorCode, String loginPassword)
-        {
-            DataTable dt = new DataTable();
+        //private bool TryLogin(string operatorCode, String loginPassword)
+        //{
+        //    DataTable dt = new DataTable();
 
-            var dc = new DatabaseController();
-            dc.SQL = "SELECT * FROM operators "
-                    + "WHERE "
-                    + " state = 1 "
-                    + " AND operator_code = '" + operatorCode + "'"
-                    + " AND login_password = '" + loginPassword + "'";
-            dt = dc.ReadAsDataTable();
+        //    var dc = new DatabaseController();
+        //    dc.SQL = "SELECT * FROM operators "
+        //            + "WHERE "
+        //            + " state = 1 "
+        //            + " AND operator_code = '" + operatorCode + "'"
+        //            + " AND login_password = '" + loginPassword + "'";
+        //    dt = dc.ReadAsDataTable();
 
-            if (dt.Rows.Count == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //    if (dt.Rows.Count == 1)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public string Password
         {
