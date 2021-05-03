@@ -10,13 +10,6 @@
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen"
         WindowTransitionsEnabled="False">
-    <mah:MetroWindow.RightWindowCommands>
-        <mah:WindowCommands>
-            <Button Content="Logout"  
-                    Command="{Binding LogoutCommand}" />
-            
-        </mah:WindowCommands>
-    </mah:MetroWindow.RightWindowCommands>
     <Grid>
             
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />

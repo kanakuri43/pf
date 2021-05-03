@@ -33,11 +33,11 @@
                         HorizontalAlignment="Center"
                         FocusManager.FocusedElement="{Binding ElementName=userIdTextBox}">
 
-                <Label Content="User ID"
+                <!--<Label Content="User ID"
                        FontFamily="Century Gothic"
                        HorizontalAlignment="Left"
                        FontSize="16"
-                       Foreground="White"/>
+                       Foreground="White"/>-->
 
                 <TextBox x:Name="userIdTextBox" 
                          FontFamily="Century Gothic"
@@ -46,19 +46,20 @@
                          Background="Transparent"
                          BorderThickness="0"
                          HorizontalContentAlignment="Left"
-                         mah:TextBoxHelper.Watermark="1234"
+                         mah:TextBoxHelper.Watermark="ログインID"
+                         Margin="0,20,0,0"
                          Foreground="White"
                          Text="{Binding UserID}"/>
 
                 <Border Height="2"
                         Background="white"/>
 
-                <Label Content="Password"
+                <!--<Label Content="Password"
                        FontFamily="Century Gothic"
                        HorizontalAlignment="Left"
                        FontSize="16"
                        Margin="0,20,0,0"
-                       Foreground="White"/>
+                       Foreground="White"/>-->
 
                 <TextBox x:Name="passwordTextbox" 
                          FontFamily="Century Gothic"
@@ -67,8 +68,9 @@
                          Background="Transparent"
                          BorderThickness="0"
                          HorizontalContentAlignment="Left"
-                         mah:TextBoxHelper.Watermark="******"
+                         mah:TextBoxHelper.Watermark="パスワード"
                          Foreground="White"
+                         Margin="0,20,0,0"
                          Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Border Height="2"
@@ -80,8 +82,7 @@
                        Margin="0,30,0,0" 
                        Content="{Binding MessageString}"    />
 
-                <Button x:Name="loginButton" 
-                        Content="Login"
+                <Button Content="ログイン"
                         FontFamily="Century Gothic"
                         FontSize="16"
                         Foreground="White"
