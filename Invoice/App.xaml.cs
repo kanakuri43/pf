@@ -17,7 +17,7 @@ namespace Invoice
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<Views.Invoice>();
         }
     }
 }
