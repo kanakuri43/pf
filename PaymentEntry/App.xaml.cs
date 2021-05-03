@@ -17,7 +17,7 @@ namespace PaymentEntry
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
+            containerRegistry.RegisterForNavigation<Views.PaymentEntry>();
         }
     }
 }
