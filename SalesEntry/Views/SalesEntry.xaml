@@ -88,10 +88,10 @@
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Grid.Column="6"/>
-                    <ComboBox Text="123456789" 
-                              Grid.Column="7" 
-                              SelectedIndex="0">
-                        <ComboBoxItem Content="10%"/>
+                    <ComboBox ItemsSource="{Binding SalesTaxRates}"
+                              SelectedValuePath="Value"
+                              DisplayMemberPath="DisplayValue"
+                              Grid.Column="7">
                     </ComboBox>
 
                 </Grid>
@@ -383,6 +383,9 @@
                 </Grid>
             </StackPanel>
 
+            <DataGrid Grid.Row="2">
+                
+            </DataGrid>
             <!--separator-->
             <Border Grid.Row="3"
                     BorderBrush="RoyalBlue"
@@ -558,8 +561,8 @@
         <Grid Background="RoyalBlue" 
               Grid.Row="2" >
             <StackPanel Orientation="Horizontal">
-                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
-                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="前伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="次伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="検索" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="登録" 
