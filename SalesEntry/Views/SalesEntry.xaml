@@ -564,7 +564,11 @@
                 <Button Content="前伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="次伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="検索" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
-                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="印刷" 
+                        Command="{Binding PrintCommand}"
+                        Width="90" 
+                        Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        BorderThickness="1"/>
                 <Button Content="登録" 
                         Width="90" 
                         BorderThickness="1"

@@ -19,5 +19,6 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\User3077\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.19</PkgMicrosoft_Xaml_Behaviors_Wpf>
     <PkgMahApps_Metro Condition=" '$(PkgMahApps_Metro)' == '' ">C:\Users\User3077\.nuget\packages\mahapps.metro\2.4.4</PkgMahApps_Metro>
+    <PkgGrapeCity_ActiveReports_Core_DataProviders Condition=" '$(PkgGrapeCity_ActiveReports_Core_DataProviders)' == '' ">C:\Users\User3077\.nuget\packages\grapecity.activereports.core.dataproviders\1.7.0</PkgGrapeCity_ActiveReports_Core_DataProviders>
   </PropertyGroup>
 </Project>

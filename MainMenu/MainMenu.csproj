@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,6 +102,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -109,12 +111,84 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SectionReport1.rpx">
+      <SubType>Component</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Gcef.Data.DataEngine">
+      <Version>2.0.186</Version>
+    </PackageReference>
+    <PackageReference Include="Gcef.Data.ExpressionInfo">
+      <Version>2.0.186</Version>
+    </PackageReference>
+    <PackageReference Include="Gcef.Data.VBFunctionLib">
+      <Version>2.0.186</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Chart.ja">
+      <Version>14.2.20790</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Core.DataProviders">
+      <Version>1.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Core.Drawing.Gc">
+      <Version>1.8.8</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Core.Drawing.Gdi">
+      <Version>1.8.8</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Core.Rdl">
+      <Version>1.8.8</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Core.Rendering">
+      <Version>1.8.8</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Document.ja">
+      <Version>14.2.20790</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.Interop.ja">
+      <Version>14.2.20790</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.ActiveReports.ja">
+      <Version>14.2.20790</Version>
+    </PackageReference>
+    <PackageReference Include="Grapecity.DataVisualization">
+      <Version>0.1.248</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.Documents.Common">
+      <Version>3.2.0.550</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.Documents.Common.Windows">
+      <Version>3.2.0.550</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.Documents.DX.Windows">
+      <Version>3.2.0.550</Version>
+    </PackageReference>
+    <PackageReference Include="GrapeCity.Documents.Imaging">
+      <Version>3.2.0.550</Version>
+    </PackageReference>
     <PackageReference Include="MahApps.Metro">
       <Version>2.4.4</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Unity" Version="8.0.0.1909" />
+    <PackageReference Include="System.Buffers">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Memory">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Numerics.Vectors">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\pf\pf.csproj">

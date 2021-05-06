@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ActiveReportsLayout Version="3.2" PrintWidth="8640" DocumentName="ActiveReports Document" ScriptLang="C#" MasterReport="0">
+  <StyleSheet>
+    <Style Name="Normal" Value="font-style: normal; text-decoration: none; font-weight: normal; font-size: 10pt; color: Black; font-family: &quot;MS UI Gothic&quot;; ddo-char-set: 128" />
+    <Style Name="Heading1" Value="font-size: 16pt; font-weight: bold; font-family: &quot;MS UI Gothic&quot;; ddo-char-set: 128" />
+    <Style Name="Heading2" Value="font-size: 14pt; font-weight: bold; font-style: inherit; font-family: &quot;MS UI Gothic&quot;; ddo-char-set: 128" />
+    <Style Name="Heading3" Value="font-size: 13pt; font-weight: bold; ddo-char-set: 128" />
+  </StyleSheet>
+  <Sections>
+    <Section Type="PageHeader" Name="PageHeader" Height="360" BackColor="16777215" />
+    <Section Type="Detail" Name="Detail" Height="2880" BackColor="16777215" />
+    <Section Type="PageFooter" Name="PageFooter" Height="360" BackColor="16777215" />
+  </Sections>
+  <ReportComponentTray />
+  <PageSettings />
+  <Parameters />
+</ActiveReportsLayout>

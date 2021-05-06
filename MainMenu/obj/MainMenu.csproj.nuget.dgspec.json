@@ -43,13 +43,105 @@
       "frameworks": {
         "net472": {
           "dependencies": {
+            "Gcef.Data.DataEngine": {
+              "target": "Package",
+              "version": "[2.0.186, )"
+            },
+            "Gcef.Data.ExpressionInfo": {
+              "target": "Package",
+              "version": "[2.0.186, )"
+            },
+            "Gcef.Data.VBFunctionLib": {
+              "target": "Package",
+              "version": "[2.0.186, )"
+            },
+            "GrapeCity.ActiveReports.Chart.ja": {
+              "target": "Package",
+              "version": "[14.2.20790, )"
+            },
+            "GrapeCity.ActiveReports.Core.DataProviders": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
+            "GrapeCity.ActiveReports.Core.Drawing.Gc": {
+              "target": "Package",
+              "version": "[1.8.8, )"
+            },
+            "GrapeCity.ActiveReports.Core.Drawing.Gdi": {
+              "target": "Package",
+              "version": "[1.8.8, )"
+            },
+            "GrapeCity.ActiveReports.Core.Rdl": {
+              "target": "Package",
+              "version": "[1.8.8, )"
+            },
+            "GrapeCity.ActiveReports.Core.Rendering": {
+              "target": "Package",
+              "version": "[1.8.8, )"
+            },
+            "GrapeCity.ActiveReports.Document.ja": {
+              "target": "Package",
+              "version": "[14.2.20790, )"
+            },
+            "GrapeCity.ActiveReports.Interop.ja": {
+              "target": "Package",
+              "version": "[14.2.20790, )"
+            },
+            "GrapeCity.ActiveReports.ja": {
+              "target": "Package",
+              "version": "[14.2.20790, )"
+            },
+            "GrapeCity.Documents.Common": {
+              "target": "Package",
+              "version": "[3.2.0.550, )"
+            },
+            "GrapeCity.Documents.Common.Windows": {
+              "target": "Package",
+              "version": "[3.2.0.550, )"
+            },
+            "GrapeCity.Documents.DX.Windows": {
+              "target": "Package",
+              "version": "[3.2.0.550, )"
+            },
+            "GrapeCity.Documents.Imaging": {
+              "target": "Package",
+              "version": "[3.2.0.550, )"
+            },
+            "Grapecity.DataVisualization": {
+              "target": "Package",
+              "version": "[0.1.248, )"
+            },
             "MahApps.Metro": {
               "target": "Package",
               "version": "[2.4.4, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
             "Prism.Unity": {
               "target": "Package",
               "version": "[8.0.0.1909, )"
+            },
+            "System.Buffers": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "System.Memory": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "System.Numerics.Vectors": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "System.Runtime.CompilerServices.Unsafe": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "System.ValueTuple": {
+              "target": "Package",
+              "version": "[4.5.0, )"
             }
           }
         }

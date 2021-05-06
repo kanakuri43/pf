@@ -10,6 +10,11 @@
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen"
         WindowTransitionsEnabled="False">
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Content="Window List" />
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
     <Grid>
             
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />

@@ -10,7 +10,16 @@ namespace SalesEntry.ViewModels
     {
         public SalesEntryViewModel()
         {
+            PrintCommand = new DelegateCommand(PrintCommandExecute);
+        }
+        public DelegateCommand PrintCommand { get; }
+
+        private void PrintCommandExecute()
+        {
+            // ボタンを押したときの処理
 
         }
+
     }
+
 }
