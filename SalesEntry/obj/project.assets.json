@@ -140,6 +140,19 @@
         "runtime": {
           "lib/net47/Unity.Container.dll": {}
         }
+      },
+      "pf/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Prism.Unity": "8.0.0.1909"
+        },
+        "compile": {
+          "bin/placeholder/pf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/pf.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.7.2/win": {
@@ -280,6 +293,19 @@
         },
         "runtime": {
           "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "pf/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Prism.Unity": "8.0.0.1909"
+        },
+        "compile": {
+          "bin/placeholder/pf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/pf.dll": {}
         }
       }
     },
@@ -422,6 +448,19 @@
         "runtime": {
           "lib/net47/Unity.Container.dll": {}
         }
+      },
+      "pf/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Prism.Unity": "8.0.0.1909"
+        },
+        "compile": {
+          "bin/placeholder/pf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/pf.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.7.2/win-x86": {
@@ -562,6 +601,19 @@
         },
         "runtime": {
           "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "pf/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Prism.Unity": "8.0.0.1909"
+        },
+        "compile": {
+          "bin/placeholder/pf.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/pf.dll": {}
         }
       }
     }
@@ -839,12 +891,18 @@
         "unity.container.5.11.8.nupkg.sha512",
         "unity.container.nuspec"
       ]
+    },
+    "pf/1.0.0": {
+      "type": "project",
+      "path": "../pf/pf.csproj",
+      "msbuildProject": "../pf/pf.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "MahApps.Metro >= 2.4.4",
-      "Prism.Unity >= 8.0.0.1909"
+      "Prism.Unity >= 8.0.0.1909",
+      "pf >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -879,7 +937,11 @@
       },
       "frameworks": {
         "net472": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\source\\repos\\pf\\pf\\pf.csproj": {
+              "projectPath": "C:\\source\\repos\\pf\\pf\\pf.csproj"
+            }
+          }
         }
       }
     },
