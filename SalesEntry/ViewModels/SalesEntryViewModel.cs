@@ -20,13 +20,23 @@ namespace SalesEntry.ViewModels
         public SalesEntryViewModel()
         {
             PrintCommand = new DelegateCommand(PrintCommandExecute);
+            EntryCommand = new DelegateCommand(EntryCommandExecute);
 
         }
         public DelegateCommand PrintCommand { get; }
+        public DelegateCommand EntryCommand { get; }
 
         private void PrintCommandExecute()
         {
             // ボタンを押したときの処理
+
+        }
+        private void EntryCommandExecute()
+        {
+            // ボタンを押したときの処理
+            DatabaseController dc = new DatabaseController();
+            dc.SQL = "sp_sales_entry";
+            dc.ExecuteProcedure();
 
         }
 

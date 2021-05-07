@@ -31,7 +31,7 @@ public class DatabaseController
 
     }
 
-    public Boolean OpenConnection()
+    private Boolean OpenConnection()
     {        
         string currentDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
         XElement xml = XElement.Load(currentDirectory + "DatabaseConnection.xml");
@@ -39,7 +39,7 @@ public class DatabaseController
         try
         {
             var cs = xml.Element("ConnectString").Value;
-            this.Connection = new MySqlConnection(cs);
+            Connection = new MySqlConnection(cs);
             Connection.Open();
             return true;
         }
@@ -65,7 +65,7 @@ public class DatabaseController
 
     public DataTable ReadAsDataTable()
     {
-        using (MySqlCommand command = new MySqlCommand(this.SQL, this.Connection))
+        using (MySqlCommand command = new MySqlCommand(SQL, Connection))
         {
             DataTable dt;
             var addapter = new MySqlDataAdapter(command);
@@ -73,56 +73,45 @@ public class DatabaseController
             addapter.Fill(dt);
             return dt;
         }
-
-
-
-
-        //Boolean result;
-
-        //System.Data.OleDb.OleDbCommand DbCommand;
-        //System.Data.OleDb.OleDbConnection DbConnection = new System.Data.OleDb.OleDbConnection();
-        //DbConnection.ConnectionString = ConnectionString;
-        //try
-        //{
-        //    DbConnection.Open();
-        //    DbCommand = new System.Data.OleDb.OleDbCommand(this.Sql, DbConnection);
-        //    DataReader = DbCommand.ExecuteReader();
-        //    result = true ;
-        //}
-        //catch (Exception ex)
-        //{
-        //    Errmsg  = ex.Message+ConnectionString;
-        //    result = false;
-        //}
-
     }
+
+    public bool ExecuteProcedure()
+    {
+        using (MySqlCommand command = new MySqlCommand(SQL, Connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            MySqlDataReader reader = command.ExecuteReader();
+            return (reader != null);
+        }
+    }
+
     //public Boolean getDatatable(ref DataTable dtbl)
     //{
-        //Boolean result;
+    //Boolean result;
 
-        //System.Data.OleDb.OleDbCommand com;
-        //System.Data.OleDb.OleDbConnection cn = new System.Data.OleDb.OleDbConnection();
-        //cn.ConnectionString = ConnectionString;
-        //try
-        //{
-        //    cn.Open();
-        //    com = new System.Data.OleDb.OleDbCommand(SQL, cn);
-        //    System.Data.OleDb.OleDbDataAdapter adapter = new System.Data.OleDb.OleDbDataAdapter(com);
-        //    dtbl.Clear();
-        //    adapter.Fill(dtbl);
-        //}
-        //catch (Exception ex)
-        //{
-        //    Errmsg = ex.Message;
-        //    result = false;
-        //}
-        //finally
-        //{
-        //    // DB切断
-        //    if (cn != null) cn.Close();
-        //    result = true;
-        //}
-        //return result;
+    //System.Data.OleDb.OleDbCommand com;
+    //System.Data.OleDb.OleDbConnection cn = new System.Data.OleDb.OleDbConnection();
+    //cn.ConnectionString = ConnectionString;
+    //try
+    //{
+    //    cn.Open();
+    //    com = new System.Data.OleDb.OleDbCommand(SQL, cn);
+    //    System.Data.OleDb.OleDbDataAdapter adapter = new System.Data.OleDb.OleDbDataAdapter(com);
+    //    dtbl.Clear();
+    //    adapter.Fill(dtbl);
+    //}
+    //catch (Exception ex)
+    //{
+    //    Errmsg = ex.Message;
+    //    result = false;
+    //}
+    //finally
+    //{
+    //    // DB切断
+    //    if (cn != null) cn.Close();
+    //    result = true;
+    //}
+    //return result;
     //}
 
     //public Boolean Execute()

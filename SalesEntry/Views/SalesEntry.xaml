@@ -570,6 +570,7 @@
                         Style="{DynamicResource MahApps.Styles.Button.Square}" 
                         BorderThickness="1"/>
                 <Button Content="登録" 
+                        Command="{Binding EntryCommand}"
                         Width="90" 
                         BorderThickness="1"
                         Margin="10,0,0,0"
