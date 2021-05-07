@@ -11,31 +11,34 @@ namespace SalesEntry.ViewModels
     {
         public DataTable SalesTaxRates
         {
-            get 
+            get
             {
-                pf.Models.SalesTaxRate taxRate = new pf.Models.SalesTaxRate();
-                return taxRate.TaxRatesList;
+                var tr = new pf.Models.SalesTaxRate();
+                //tr.TaxRatesList.AsEnumerable().Select(r => r["tax-rate"] = r["tax-rate"] + 100);
+
+                return tr.TaxRatesList;
             }
         }
+        public DelegateCommand PrintCommand { get; }
+        public DelegateCommand EntryCommand { get; }
+
         public SalesEntryViewModel()
         {
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
         }
-        public DelegateCommand PrintCommand { get; }
-        public DelegateCommand EntryCommand { get; }
 
         private void PrintCommandExecute()
         {
-            // ボタンを押したときの処理
+            // 印刷ボタンを押したときの処理
 
         }
         private void EntryCommandExecute()
         {
-            // ボタンを押したときの処理
+            // 登録ボタンを押したときの処理
             DatabaseController dc = new DatabaseController();
-            dc.SQL = "sp_sales_entry";
+            dc.SQL = "sp_sales_entry(0)";
             dc.ExecuteProcedure();
 
         }

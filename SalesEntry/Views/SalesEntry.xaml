@@ -89,8 +89,8 @@
                                VerticalAlignment="Center"
                                Grid.Column="6"/>
                     <ComboBox ItemsSource="{Binding SalesTaxRates}"
-                              SelectedValuePath="Value"
-                              DisplayMemberPath="DisplayValue"
+                              SelectedValuePath="id"
+                              DisplayMemberPath="tax_rate"
                               Grid.Column="7">
                     </ComboBox>
 
