@@ -26,12 +26,9 @@ public class DatabaseController
     public DatabaseController()
     {
         OpenConnection();
-
-        
-
     }
 
-    private Boolean OpenConnection()
+    protected Boolean OpenConnection()
     {        
         string currentDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
         XElement xml = XElement.Load(currentDirectory + "DatabaseConnection.xml");
@@ -75,15 +72,15 @@ public class DatabaseController
         }
     }
 
-    public bool ExecuteProcedure()
-    {
-        using (MySqlCommand command = new MySqlCommand(SQL, Connection))
-        {
-            command.CommandType = CommandType.StoredProcedure;
-            MySqlDataReader reader = command.ExecuteReader();
-            return (reader != null);
-        }
-    }
+    //public bool ExecuteProcedure()
+    //{
+    //    using (MySqlCommand command = new MySqlCommand(SQL, Connection))
+    //    {
+    //        command.CommandType = CommandType.StoredProcedure;
+    //        MySqlDataReader reader = command.ExecuteReader();
+    //        return (reader != null);
+    //    }
+    //}
 
     //public Boolean getDatatable(ref DataTable dtbl)
     //{

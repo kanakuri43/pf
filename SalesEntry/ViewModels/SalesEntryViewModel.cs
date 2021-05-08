@@ -9,6 +9,7 @@ namespace SalesEntry.ViewModels
 {
     public class SalesEntryViewModel : BindableBase
     {
+
         public DataTable SalesTaxRates
         {
             get
@@ -19,6 +20,15 @@ namespace SalesEntry.ViewModels
                 return tr.TaxRatesList;
             }
         }
+
+        public int SlipNo { get; set; }
+        public DateTime SlipDate { get; set; }
+        public int OderSlipNo { get; set; }
+        public string CustomerCode { get; set; }
+        public string CustomerName { get; set; }
+        public int SalesTaxRateId { get; set; }
+
+
         public DelegateCommand PrintCommand { get; }
         public DelegateCommand EntryCommand { get; }
 
@@ -27,6 +37,13 @@ namespace SalesEntry.ViewModels
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
+            // 初期値表示
+            SlipNo = 123;
+            SlipDate = DateTime.Today;
+            OderSlipNo = 456;
+            CustomerCode = "100";
+            CustomerName = "オビサン株式会社";
+            SalesTaxRateId = 4;
         }
 
         private void PrintCommandExecute()
@@ -37,8 +54,8 @@ namespace SalesEntry.ViewModels
         private void EntryCommandExecute()
         {
             // 登録ボタンを押したときの処理
-            DatabaseController dc = new DatabaseController();
-            dc.SQL = "sp_sales_entry(0)";
+            var dc = new Models.SalesEntryModel();
+            dc.SQL = "sp_sales_entry";
             dc.ExecuteProcedure();
 
         }
