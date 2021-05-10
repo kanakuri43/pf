@@ -135,14 +135,14 @@
                     <TextBox Grid.Column="1"
                              TextAlignment="Left"
                              IsReadOnly="true"
-                             Text="990-8668"/>
+                             Text="{Binding ZipCode}"/>
                     <TextBox Grid.Column="2"
                              TextAlignment="Left"
                              IsReadOnly="true"
-                             Text="山形県山形市"/>
+                             Text="{Binding Address}"/>
                     <TextBox Grid.Column="3"
                              IsReadOnly="true"
-                             Text="023-633-5511"/>
+                             Text="{Binding Tel}"/>
 
                 </Grid>
             </Grid>
@@ -483,7 +483,7 @@
                             BorderThickness="0,0,0,1"/>
 
 
-                    <TextBlock Text="小計"  
+                    <TextBlock Text="売価"  
                                Grid.Row="0" 
                                Grid.Column="0" 
                                TextAlignment="Center"
@@ -495,7 +495,7 @@
                                TextAlignment="Right"/>
 
 
-                    <TextBlock Text="消費税" 
+                    <TextBlock Text="原価" 
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Grid.Row="1" 
@@ -506,7 +506,7 @@
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
 
-                    <TextBlock Text="税込計" 
+                    <TextBlock Text="粗利" 
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                Grid.Row="2" 
@@ -525,7 +525,7 @@
                                VerticalAlignment="Center" />
                     <TextBox Grid.Row="0"
                                Grid.Column="3" 
-                               Text="1,000" 
+                               Text="{Binding Subtotal}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
 
@@ -536,18 +536,18 @@
                                Grid.Column="2"/>
                     <TextBox Grid.Row="1" 
                                Grid.Column="3" 
-                               Text="100" 
+                               Text="{Binding SalesTax}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
 
-                    <TextBlock Text="税込計" 
+                    <TextBlock Text="合計" 
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                Grid.Row="2" 
                                Grid.Column="2"/>
                     <TextBox   Grid.Row="2" 
                                Grid.Column="3" 
-                               Text="1,100" 
+                               Text="{Binding Total}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
 
@@ -561,7 +561,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Content="前伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="次伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
-                <Button Content="検索" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="印刷" 
                         Command="{Binding PrintCommand}"
                         Width="90" 
