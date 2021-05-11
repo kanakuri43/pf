@@ -10,14 +10,34 @@ namespace SalesEntry.ViewModels
 {
     public class SalesEntryViewModel : BindableBase
     {
+        public SalesEntryViewModel()
+        {
+            PrintCommand = new DelegateCommand(PrintCommandExecute);
+            EntryCommand = new DelegateCommand(EntryCommandExecute);
+
+            // 初期値表示
+            var m = new Models.SalesEntryModel();
+            SalesHeader = m.SalesHeader;
+
+            SlipNo = (int)SalesHeader.Rows[0]["slip_no"];
+            SlipDate = (DateTime)SalesHeader.Rows[0]["slip_date"];
+            CustomerCode = SalesHeader.Rows[0]["customer_code"].ToString();
+            CustomerName = SalesHeader.Rows[0]["customer_name"].ToString();
+            SalesTaxRateId = 4;
+            ZipCode = SalesHeader.Rows[0]["zip_code"].ToString();
+            Address = SalesHeader.Rows[0]["address"].ToString();
+            Tel = SalesHeader.Rows[0]["tel"].ToString();
+            Subtotal = "1,000";
+            SalesTax = "100";
+            Total = 1100;
+
+        }
 
         public DataTable SalesTaxRates
         {
             get
             {
                 var tr = new pf.Models.SalesTaxRate();
-                //tr.TaxRatesList.AsEnumerable().Select(r => r["tax-rate"] = r["tax-rate"] + 100);
-
                 return tr.TaxRatesList;
             }
         }
@@ -34,59 +54,12 @@ namespace SalesEntry.ViewModels
         public string SalesTax { get; set; }
         public int Total { get; set; }
 
-        public DataTable SalesDataTable = new DataTable();
+        public DataTable SalesHeader = new DataTable();
 
         public DelegateCommand PrintCommand { get; }
         public DelegateCommand EntryCommand { get; }
          
 
-        public SalesEntryViewModel()
-        {
-            PrintCommand = new DelegateCommand(PrintCommandExecute);
-            EntryCommand = new DelegateCommand(EntryCommandExecute);
-
-            // 初期値表示
-            var m = new Models.SalesEntryModel();
-            m.SQL = "SELECT "
-                  + "  h.id "
-                  + "  , h.slip_no "
-                  + "  , h.slip_date "
-                  + "  , customers.customer_code "
-                  + "  , customers.customer_name "
-                  + "  , customers.zip_code "
-                  + "  , customers.address1 +  customers.address1 address"
-                  + "  , customers.tel "
-                  + "  , staffs.staff_code "
-                  + "  , staffs.staff_name "
-                  + "FROM "
-                  + "  sales_header h "
-                  + "  LEFT JOIN customers "
-                  + "    ON h.customer_id = customers.id "
-                  + "    AND customers.state = 0 "
-                  + "  LEFT JOIN staffs "
-                  + "    ON h.staff_id = staffs.id "
-                  + "   AND staffs.state = 0 "
-                  + "  LEFT JOIN sales_detail d "
-                  + "    ON h.slip_no = d.slip_no "
-                  + "    AND d.state = 0 "
-                  + "WHERE "
-                  + "  h.state = 0 "
-                  + "  AND h.slip_no = 2 ";
-            SalesDataTable = m.ReadAsDataTable();
-
-            SlipNo = (int)SalesDataTable.Rows[0]["slip_no"];
-            SlipDate = (DateTime)SalesDataTable.Rows[0]["slip_date"];
-            CustomerCode = SalesDataTable.Rows[0]["customer_code"].ToString();
-            CustomerName = SalesDataTable.Rows[0]["customer_name"].ToString();
-            SalesTaxRateId = 4;
-            ZipCode = SalesDataTable.Rows[0]["zip_code"].ToString();
-            Address = SalesDataTable.Rows[0]["address"].ToString();
-            Tel = SalesDataTable.Rows[0]["tel"].ToString();
-            Subtotal = "1,000";
-            SalesTax = "100";
-            Total = 1100;
-
-        }
 
         private void PrintCommandExecute()
         {
