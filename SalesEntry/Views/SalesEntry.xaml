@@ -147,135 +147,7 @@
                 </Grid>
             </Grid>
 
-            <!--separator-->
-            <!--<Border Grid.Row="1"
-                    BorderBrush="RoyalBlue"
-                    BorderThickness="1"/>-->
-
             <!--detail-->
-            <Grid Grid.Row="1" Margin="4,10,4,4">
-
-                <!-- DataGridの定義 -->
-
-                <DataGrid x:Name="uxDataGrid" 
-                  HeadersVisibility="Column" 
-                  CanUserAddRows="False" 
-                  AutoGenerateColumns="False" 
-                  ItemsSource="{Binding}" >
-
-                    <!-- DataGrid全体のヘッダスタイル設定 -->
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
-                    <DataGrid.Columns>
-
-                        <!-- 日付項目の表示 -->
-                        <DataGridTextColumn Header="日付" Width="100" Binding="{Binding Path=日付,StringFormat={}{0:yyyy年MM月dd日}}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-
-                        <!-- メーカー、商品コード、商品名、の3段表示 -->
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.Header>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="メーカー"/>
-                                    <TextBlock Text="商品コード"/>
-                                    <TextBlock Text="商品名"/>
-                                </StackPanel>
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate >
-                                    <StackPanel Orientation="Vertical" Margin="0" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding メーカー}" Padding="5,0,5,0" />
-                                        <Border BorderThickness="0,0,0,1"  />
-                                        <TextBlock Text="{Binding 商品コード}" Padding="5,0,5,0" />
-                                        <Border BorderThickness="0,0,0,1"  BorderBrush="Gray"/>
-                                        <TextBlock Text="{Binding 商品名}" Padding="5,0,5,0" FontWeight="Bold"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                        <!-- 単価、数量の2段表示 -->
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.Header>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="単価"/>
-                                    <TextBlock Text="数量"/>
-                                </StackPanel>
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="50*"/>
-                                            <RowDefinition Height="1"/>
-                                            <RowDefinition Height="50*"/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" Text="{Binding 単価,StringFormat={}{0:N}}"  TextAlignment="Right" Padding="2"/>
-                                        <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="Gray"/>
-                                        <TextBlock Grid.Row="2" Text="{Binding 数量}" TextAlignment="Right" Padding="2"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                        <!-- 単価、数量の2段表示 -->
-                        <DataGridTextColumn Header="合計金額" Width="100" Binding="{Binding Path=合計,StringFormat={}{0:N}}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                    <Setter Property="HorizontalAlignment" Value="Right"/>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-
-                        <!-- センサー、画素数、サイズの2列2段表示-->
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.Header>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="センサー／画素数"/>
-                                    <TextBlock Text="サイズ" HorizontalAlignment="Center"/>
-                                </StackPanel>
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="50*"/>
-                                            <RowDefinition Height="1"/>
-                                            <RowDefinition Height="50*"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="50*"/>
-                                                <ColumnDefinition Width="1"/>
-                                                <ColumnDefinition Width="50*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding センサー}"  Padding="5,0,5,0" />
-                                            <Border Grid.Column="1" BorderThickness="1,0,0,0"  BorderBrush="Gray"/>
-                                            <TextBlock Grid.Column="2" Text="{Binding 画素数,StringFormat={}{0}万画素}" Padding="5,0,5,0" />
-                                        </Grid>
-                                        <Border Grid.Row="1" BorderThickness="0,0,0,1"  BorderBrush="Gray"/>
-                                        <TextBlock Text="{Binding サイズ}" Grid.Row="2"  TextAlignment="Center" Padding="2"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                    </DataGrid.Columns>
-                </DataGrid>
-
-            </Grid>
-
-            <!--label test-->
             <StackPanel Grid.Row="2" Orientation="Vertical">
                 <Grid Height="30"
                   VerticalAlignment="top">
@@ -382,6 +254,7 @@
                              Text="1000"                             
                              TextAlignment="Right"/>
                 </Grid>
+
             </StackPanel>
 
             <!--separator-->
