@@ -10,23 +10,26 @@ namespace SalesEntry.ViewModels
 {
     public class SalesEntryViewModel : BindableBase
     {
+        private DataTable _salesHeader = new DataTable();
+        private Models.SalesEntryModel _salesEntryModel = new Models.SalesEntryModel();
+
         public SalesEntryViewModel()
         {
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
             // 初期値表示
-            var m = new Models.SalesEntryModel();
-            SalesHeader = m.SalesHeader;
+            //var m = new Models.SalesEntryModel();
+            _salesHeader = _salesEntryModel.SalesHeader(2);
 
-            SlipNo = (int)SalesHeader.Rows[0]["slip_no"];
-            SlipDate = (DateTime)SalesHeader.Rows[0]["slip_date"];
-            CustomerCode = SalesHeader.Rows[0]["customer_code"].ToString();
-            CustomerName = SalesHeader.Rows[0]["customer_name"].ToString();
+            SlipNo = (int)_salesHeader.Rows[0]["slip_no"];
+            SlipDate = (DateTime)_salesHeader.Rows[0]["slip_date"];
+            CustomerCode = _salesHeader.Rows[0]["customer_code"].ToString();
+            CustomerName = _salesHeader.Rows[0]["customer_name"].ToString();
             SalesTaxRateId = 4;
-            ZipCode = SalesHeader.Rows[0]["zip_code"].ToString();
-            Address = SalesHeader.Rows[0]["address"].ToString();
-            Tel = SalesHeader.Rows[0]["tel"].ToString();
+            ZipCode = _salesHeader.Rows[0]["zip_code"].ToString();
+            Address = _salesHeader.Rows[0]["address"].ToString();
+            Tel = _salesHeader.Rows[0]["tel"].ToString();
             Subtotal = "1,000";
             SalesTax = "100";
             Total = 1100;
@@ -54,7 +57,14 @@ namespace SalesEntry.ViewModels
         public string SalesTax { get; set; }
         public int Total { get; set; }
 
-        public DataTable SalesHeader = new DataTable();
+        public DataTable SalesDetail
+        {
+            get
+            {
+                return _salesEntryModel.SalesDetail(SlipNo);
+            }
+        }
+
 
         public DelegateCommand PrintCommand { get; }
         public DelegateCommand EntryCommand { get; }
@@ -70,9 +80,8 @@ namespace SalesEntry.ViewModels
         {
             int slipNo = 0;
             // 登録ボタンを押したときの処理
-            var m = new Models.SalesEntryModel();
-            slipNo = m.RegistHeader(0, DateTime.Parse("2021/12/31"), 1, 1, 2);
-            slipNo = m.RegistDetail(slipNo, 1, 1, 23, 1, 1000, 900, 500, 0, 0, 2);
+            slipNo = _salesEntryModel.RegistHeader(0, SlipDate, 1, 1, 2);
+            slipNo = _salesEntryModel.RegistDetail(slipNo, 1, 1, 23, 1, 1000, 900, 500, 0, 0, 2);
             SlipNo = slipNo;
         }
 

@@ -71,8 +71,9 @@ namespace MainMenu.ViewModels
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
             OperatorCode = navigationContext.Parameters.GetValue<string>(nameof(OperatorCode));
-
-            Operator o = new Operator(OperatorCode);
+            var cf = new CommonFunctions();
+            Operator o = new Operator(cf.OperatorCodeToId(OperatorCode));
+            //Operator o = new Operator(OperatorCode);
             Information1 = "Operator : " + o.OperatorName;
         }
 

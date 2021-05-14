@@ -71,16 +71,34 @@ public class DatabaseController
             return dt;
         }
     }
+    public MySqlDataReader ReadAsDataReader()
+    {
+        using (MySqlCommand command = new MySqlCommand(SQL, Connection)) 
+        {
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                return reader;
+            }
+            else
+            {
+                return null;
+            }
 
-    //public bool ExecuteProcedure()
-    //{
-    //    using (MySqlCommand command = new MySqlCommand(SQL, Connection))
-    //    {
-    //        command.CommandType = CommandType.StoredProcedure;
-    //        MySqlDataReader reader = command.ExecuteReader();
-    //        return (reader != null);
-    //    }
-    //}
+        }
+    }
+
+    public bool ExecuteProcedure()
+    {
+        using (MySqlCommand command = new MySqlCommand(SQL, Connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            MySqlDataReader reader = command.ExecuteReader();
+            return (reader != null);
+        }
+    }
+
+
 
     //public Boolean getDatatable(ref DataTable dtbl)
     //{

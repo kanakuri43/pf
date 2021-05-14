@@ -65,6 +65,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\CommonFunctions.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DatabaseController.cs" />
     <Compile Include="Models\Operator.cs" />
     <Compile Include="Models\SalesTaxRate.cs" />

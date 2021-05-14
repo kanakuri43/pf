@@ -9,14 +9,41 @@ namespace pf.Models
 {
     public class Operator
     {
-        private string _operatorCode;
+        //private string _operatorCode;
+        //private int _operatorId;
+        private DataTable _operatorDataTable;
+
+        public Operator(int operatorId)
+        {
+            //_operatorId = operatorId;
+
+            var dc = new DatabaseController();
+            dc.SQL = "SELECT "
+                    + " * "
+                    + "FROM operators "
+                    + "WHERE "
+                    + " id = '" + operatorId + "'";
+
+            _operatorDataTable = dc.ReadAsDataTable();
+        }
         public string OperatorCode
         {
-            get { return _operatorCode; }
+            get
+            {
+                return _operatorDataTable.Rows[0]["operator_code"].ToString();
+            }
         }
-        public string OperatorName => _operatorDataTable.Rows[0]["operator_name"].ToString();
+        public string OperatorName
+        {
+            get 
+            {
+                return _operatorDataTable.Rows[0]["operator_name"].ToString(); 
+            }
+        }
 
-        private DataTable _operatorDataTable;
+
+        //public string OperatorName => _operatorDataTable.Rows[0]["operator_name"].ToString();
+
 
         public bool TryLogin(String loginPassword)
         {
@@ -25,7 +52,7 @@ namespace pf.Models
             var dc = new DatabaseController();
             dc.SQL = "SELECT * FROM operators "
                     + "WHERE "
-                    + " state = 1 "
+                    + " state = 0 "
                     + " AND operator_code = '" + OperatorCode + "'"
                     + " AND login_password = '" + loginPassword + "'";
             dt = dc.ReadAsDataTable();
@@ -38,23 +65,6 @@ namespace pf.Models
             {
                 return false;
             }
-        }
-        public Operator(string OperatorCode)
-        {
-            _operatorCode = OperatorCode;
-
-            var dc = new DatabaseController();
-            dc.SQL = "SELECT "
-                    + " * "
-                    + "FROM operators "
-                    + "WHERE "
-                    + " state = 1 "
-                    + " AND operator_code = '" + OperatorCode + "'";
-        
-            _operatorDataTable = dc.ReadAsDataTable();
-
-        
-
         }
     }
 }

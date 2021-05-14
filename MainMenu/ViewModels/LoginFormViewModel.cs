@@ -15,18 +15,25 @@ namespace MainMenu.ViewModels
     {
         private readonly IRegionManager _regionManager;
         private string _plainPassword = string.Empty;
-        private string _userID = string.Empty;
+        private string _operatorCode = string.Empty;
         private string _messageString = string.Empty;
+
+        public LoginFormViewModel(IRegionManager regionManager)
+        {
+            _regionManager = regionManager;
+            LoginCommand = new DelegateCommand(LoginCommandExecute);
+
+        }
 
         public string MessageString
         {
             get { return _messageString; }
             set { SetProperty(ref _messageString, value); }
         }
-        public string UserID
+        public string OperatorCode
         {
-            get { return _userID; }
-            set { SetProperty(ref _userID, value); }
+            get { return _operatorCode; }
+            set { SetProperty(ref _operatorCode, value); }
         }
         private string _loginPassword = string.Empty;
         public string LoginPassword
@@ -35,56 +42,7 @@ namespace MainMenu.ViewModels
             set { SetProperty(ref _loginPassword, value); }
         }
 
-        public LoginFormViewModel(IRegionManager regionManager)
-        {
-            _regionManager = regionManager;
-            LoginCommand = new DelegateCommand(LoginCommandExecute);
-
-        }
         public DelegateCommand LoginCommand { get; }
-        private void LoginCommandExecute()
-        {
-            Operator o = new Operator(UserID);
-            if (o.TryLogin(PlainPassword))
-            {
-
-                // Menu表示
-                var p = new NavigationParameters();
-                p.Add(nameof(MenuViewModel.OperatorCode), UserID);
-                _regionManager.RequestNavigate("ContentRegion", nameof(Menu), p);
-
-                MessageString = string.Empty;
-                UserID = string.Empty;
-                PlainPassword = string.Empty;
-                Password = string.Empty;
-            }
-            else
-            {
-                MessageString = "User ID または Password が違います。";
-            }
-        }
-
-        //private bool TryLogin(string operatorCode, String loginPassword)
-        //{
-        //    DataTable dt = new DataTable();
-
-        //    var dc = new DatabaseController();
-        //    dc.SQL = "SELECT * FROM operators "
-        //            + "WHERE "
-        //            + " state = 1 "
-        //            + " AND operator_code = '" + operatorCode + "'"
-        //            + " AND login_password = '" + loginPassword + "'";
-        //    dt = dc.ReadAsDataTable();
-
-        //    if (dt.Rows.Count == 1)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
 
         public string Password
         {
@@ -117,5 +75,35 @@ namespace MainMenu.ViewModels
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void LoginCommandExecute()
+        {
+            var cf = new CommonFunctions();
+            var oi = cf.OperatorCodeToId(OperatorCode);
+            if (oi == -1)
+            {
+                MessageString = "User IDが違います。";
+                return;
+            }
+
+            var o = new Operator(oi);
+            if (o.TryLogin(PlainPassword) == false)
+            {
+                MessageString = "User ID または Password が違います。";
+                return;
+            }
+
+            // Menu表示
+            var p = new NavigationParameters();
+            p.Add(nameof(MenuViewModel.OperatorCode), OperatorCode);
+            _regionManager.RequestNavigate("ContentRegion", nameof(Menu), p);
+
+            MessageString = string.Empty;
+            OperatorCode = string.Empty;
+            PlainPassword = string.Empty;
+            Password = string.Empty;
+        }
+
+
     }
 }

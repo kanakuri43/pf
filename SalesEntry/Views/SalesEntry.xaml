@@ -255,6 +255,9 @@
                              TextAlignment="Right"/>
                 </Grid>
 
+                <ListBox ItemsSource="{Binding SalesDetail}">
+                    
+                </ListBox>
             </StackPanel>
 
             <!--separator-->

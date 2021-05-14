@@ -18,6 +18,7 @@ namespace SalesEntry
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Views.SalesEntry>();
+            containerRegistry.RegisterForNavigation<Views.SalesDetail>();
         }
     }
 }

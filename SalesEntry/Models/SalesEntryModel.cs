@@ -17,43 +17,71 @@ namespace SalesEntry.Models
             OpenConnection();
         }
 
-        public DataTable SalesHeader
+        public DataTable SalesHeader(int slipNo)
         {
-            get
+            SQL = "SELECT "
+                + "  h.id "
+                + "  , h.slip_no "
+                + "  , h.slip_date "
+                + "  , customers.customer_code "
+                + "  , customers.customer_name "
+                + "  , customers.zip_code "
+                + "  , customers.address1 +  customers.address1 address"
+                + "  , customers.tel "
+                + "  , staffs.staff_code "
+                + "  , staffs.staff_name "
+                + "FROM "
+                + "  sales_header h "
+                + "  LEFT JOIN customers "
+                + "    ON h.customer_id = customers.id "
+                + "    AND customers.state = 0 "
+                + "  LEFT JOIN staffs "
+                + "    ON h.staff_id = staffs.id "
+                + "   AND staffs.state = 0 "
+                + "  LEFT JOIN sales_detail d "
+                + "    ON h.slip_no = d.slip_no "
+                + "    AND d.state = 0 "
+                + "WHERE "
+                + "  h.state = 0 "
+                + "  AND h.slip_no = " + slipNo.ToString();
+            using (MySqlCommand command = new MySqlCommand(SQL, Connection))
             {
-                SQL = "SELECT "
-                    + "  h.id "
-                    + "  , h.slip_no "
-                    + "  , h.slip_date "
-                    + "  , customers.customer_code "
-                    + "  , customers.customer_name "
-                    + "  , customers.zip_code "
-                    + "  , customers.address1 +  customers.address1 address"
-                    + "  , customers.tel "
-                    + "  , staffs.staff_code "
-                    + "  , staffs.staff_name "
-                    + "FROM "
-                    + "  sales_header h "
-                    + "  LEFT JOIN customers "
-                    + "    ON h.customer_id = customers.id "
-                    + "    AND customers.state = 0 "
-                    + "  LEFT JOIN staffs "
-                    + "    ON h.staff_id = staffs.id "
-                    + "   AND staffs.state = 0 "
-                    + "  LEFT JOIN sales_detail d "
-                    + "    ON h.slip_no = d.slip_no "
-                    + "    AND d.state = 0 "
-                    + "WHERE "
-                    + "  h.state = 0 "
-                    + "  AND h.slip_no = 2 ";
-                using (MySqlCommand command = new MySqlCommand(SQL, Connection))
-                {
-                    DataTable dt;
-                    var addapter = new MySqlDataAdapter(command);
-                    dt = new DataTable();
-                    addapter.Fill(dt);
-                    return dt;
-                }
+                DataTable dt;
+                var addapter = new MySqlDataAdapter(command);
+                dt = new DataTable();
+                addapter.Fill(dt);
+                return dt;
+            }
+    }
+        public DataTable SalesDetail(int slipNo)
+        {
+
+            SQL = "SELECT " 
+                + "  d.id "
+                + "  , products.product_code "
+                + "  , products.product_name "
+                + "  , d.qty "
+                + "  , units.unit_name "
+                + "  , d.unit_price "
+                + "  , d.qty* d.unit_price price "
+                + "FROM "
+                + "  sales_detail d "
+                + "  LEFT JOIN products "
+                + "    ON d.product_id = products.id "
+                + "    AND products.state = 0 "
+                + "  LEFT JOIN units "
+                + "    ON d.unit_id = units.id "
+                + "    AND units.state = 0 "
+                + "WHERE "
+                + "  d.state = 0 "
+                + "  AND d.slip_no = " + slipNo.ToString();
+            using (MySqlCommand command = new MySqlCommand(SQL, Connection))
+            {
+                DataTable dt;
+                var addapter = new MySqlDataAdapter(command);
+                dt = new DataTable();
+                addapter.Fill(dt);
+                return dt;
             }
         }
         public int RegistHeader(int slipNo, DateTime slipDate, int customerId, int staffId, int operatorId)
