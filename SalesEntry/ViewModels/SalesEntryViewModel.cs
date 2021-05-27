@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
+using SalesEntry.Models;
 
 namespace SalesEntry.ViewModels
 {
@@ -12,6 +14,7 @@ namespace SalesEntry.ViewModels
     {
         private DataTable _salesHeader = new DataTable();
         private Models.SalesEntryModel _salesEntryModel = new Models.SalesEntryModel();
+        private ObservableCollection<SalesDetail> _salesDetails = new ObservableCollection<SalesDetail>();
 
         public SalesEntryViewModel()
         {
@@ -33,6 +36,16 @@ namespace SalesEntry.ViewModels
             Subtotal = "1,000";
             SalesTax = "100";
             Total = 1100;
+
+            // 明細データ作成
+            for (var i = 1; i < 9; i++)
+            {
+                var sd = new SalesDetail();
+                sd.LineNo = i;
+                //sd.ItemName = "A10" + i.ToString() + "  " + "B10" + i.ToString();
+                //sd.Qty =  (i * 10);
+                _salesDetails.Add(sd);
+            }
 
         }
 
@@ -57,12 +70,10 @@ namespace SalesEntry.ViewModels
         public string SalesTax { get; set; }
         public int Total { get; set; }
 
-        public DataTable SalesDetail
+        public ObservableCollection<SalesDetail> SalesDetails
         {
-            get
-            {
-                return _salesEntryModel.SalesDetail(SlipNo);
-            }
+            get { return _salesDetails; }
+            set { SetProperty(ref _salesDetails, value); }
         }
 
 
