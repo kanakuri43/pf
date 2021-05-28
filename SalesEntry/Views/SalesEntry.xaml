@@ -120,7 +120,6 @@
                     <TextBox Grid.Column="1"
                              Text="{Binding CustomerCode}"/>
                     <TextBox Grid.Column="2"
-                             IsReadOnly="true"
                              Text="{Binding CustomerName}"/>
                 </Grid>
                 <Grid Grid.Row="2">
@@ -134,14 +133,11 @@
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="1"
                              TextAlignment="Left"
-                             IsReadOnly="true"
                              Text="{Binding ZipCode}"/>
                     <TextBox Grid.Column="2"
                              TextAlignment="Left"
-                             IsReadOnly="true"
                              Text="{Binding Address}"/>
                     <TextBox Grid.Column="3"
-                             IsReadOnly="true"
                              Text="{Binding Tel}"/>
 
                 </Grid>
@@ -255,8 +251,70 @@
                              TextAlignment="Right"/>
                 </Grid>
 
-                <DataGrid ItemsSource="{Binding SalesDetails}">
-                    
+                <DataGrid ItemsSource="{Binding SalesDetails}"
+                          AutoGenerateColumns="False" 
+                          CanUserReorderColumns="False" 
+                          CanUserResizeColumns="False" 
+                          CanUserSortColumns="False" 
+                          CanUserResizeRows="False" 
+                          CanUserAddRows="False" 
+                          GridLinesVisibility="Horizontal" BorderBrush="{x:Null}">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Binding="{Binding LineNo}" 
+                                             Width="30" 
+                                             IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding ItemName}"                                              
+                                             Width="450"/>
+                        
+                        <DataGridTextColumn  Binding="{Binding Qty}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        
+                        <DataGridTextColumn  Binding="{Binding Unit}" 
+                                             Width="80"/>
+                        
+                        <DataGridTextColumn  Binding="{Binding Cost}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding UnitPrice}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding Price}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                    </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
 

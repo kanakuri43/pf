@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using pf.Models;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Collections.ObjectModel;
 
 namespace SalesEntry.Models
 {
@@ -84,16 +85,19 @@ namespace SalesEntry.Models
                 return dt;
             }
         }
-        public int RegistHeader(int slipNo, DateTime slipDate, int customerId, int staffId, int operatorId)
+        //public int RegistHeader(int slipNo, DateTime slipDate, int customerId, int staffId, int operatorId)
+        public int RegistHeader(int slipNo, DateTime slipDate, string customerCode, string staffCode, string operatorCode)
         {
+            var cf = new CommonFunctions();
+
             using (MySqlCommand command = new MySqlCommand("usp_sales_header_entry", Connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@arg_slip_no", slipNo);
                 command.Parameters.AddWithValue("@arg_slip_date", slipDate);
-                command.Parameters.AddWithValue("@arg_customer_id", customerId);
-                command.Parameters.AddWithValue("@arg_staff_id", staffId);
-                command.Parameters.AddWithValue("@arg_operator_id", operatorId);
+                command.Parameters.AddWithValue("@arg_customer_id", cf.CustomerCodeToId(customerCode));
+                command.Parameters.AddWithValue("@arg_staff_id", cf.StaffCodeToId("0"));
+                command.Parameters.AddWithValue("@arg_operator_id", cf.OperatorCodeToId("2"));
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -108,35 +112,41 @@ namespace SalesEntry.Models
                 }
             }
         }
-        public int RegistDetail(int slipNo, int lineNo, int productId, int qty, int unitId, int catalogPrice, int unitPrice, int unitCost, int lineTaxPrice, int lineIncludeTaxPrice, int operatorId)
+        //public int RegistDetail(int slipNo, int lineNo, int productId, int qty, int unitId, int catalogPrice, int unitPrice, int unitCost, int lineTaxPrice, int lineIncludeTaxPrice, int operatorId)
+        public int RegistDetail(int slipNo, ObservableCollection<SalesDetail> salesDetails)
         {
-            using (MySqlCommand command = new MySqlCommand("usp_sales_detail_entry", Connection))
+                
+            foreach(var sd in salesDetails)
             {
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@arg_slip_no", slipNo);
-                command.Parameters.AddWithValue("@arg_line_no", lineNo);
-                command.Parameters.AddWithValue("@arg_product_id", productId);
-                command.Parameters.AddWithValue("@arg_qty", qty);
-                command.Parameters.AddWithValue("@arg_unit_id", unitId);
-                command.Parameters.AddWithValue("@arg_catalog_price", catalogPrice);
-                command.Parameters.AddWithValue("@arg_unit_price", unitPrice);
-                command.Parameters.AddWithValue("@arg_unit_cost", unitCost);
-                command.Parameters.AddWithValue("@arg_line_tax_price", lineTaxPrice);
-                command.Parameters.AddWithValue("@arg_line_include_tax_price", lineIncludeTaxPrice);
-                command.Parameters.AddWithValue("@arg_operator_id", operatorId);
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlCommand command = new MySqlCommand("usp_sales_detail_entry", Connection))
                 {
-                    if (reader.HasRows)
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@arg_slip_no", slipNo);
+                    command.Parameters.AddWithValue("@arg_line_no", sd.LineNo);
+                    command.Parameters.AddWithValue("@arg_product_id", sd.ProductId);
+                    command.Parameters.AddWithValue("@arg_qty", sd.Qty);
+                    command.Parameters.AddWithValue("@arg_unit_id", sd.UnitId);
+                    command.Parameters.AddWithValue("@arg_catalog_price", sd.CatalogPrice);
+                    command.Parameters.AddWithValue("@arg_unit_price", sd.UnitPrice);
+                    command.Parameters.AddWithValue("@arg_unit_cost", sd.UnitCost);
+                    command.Parameters.AddWithValue("@arg_line_sales_tax_price", 0);
+                    command.Parameters.AddWithValue("@arg_line_include_sales_tax_price", 0);
+                    command.Parameters.AddWithValue("@arg_operator_id", 2);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        reader.Read();
-                        return (int)reader["arg_slip_no"];
-                    }
-                    else
-                    {
-                        return 0;
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                        }
+                        else
+                        {
+                            return -1;
+                        }
                     }
                 }
             }
+            return slipNo;
         }
 
         public bool DeleteHeader(int slipNo)

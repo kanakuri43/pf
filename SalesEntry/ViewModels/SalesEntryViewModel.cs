@@ -7,6 +7,7 @@ using System.Data;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using SalesEntry.Models;
+using pf.Models;
 
 namespace SalesEntry.ViewModels
 {
@@ -23,10 +24,10 @@ namespace SalesEntry.ViewModels
 
             // 初期値表示
             //var m = new Models.SalesEntryModel();
-            _salesHeader = _salesEntryModel.SalesHeader(2);
+            _salesHeader = _salesEntryModel.SalesHeader(1);
 
             SlipNo = (int)_salesHeader.Rows[0]["slip_no"];
-            SlipDate = (DateTime)_salesHeader.Rows[0]["slip_date"];
+            SlipDate = DateTime.Today;
             CustomerCode = _salesHeader.Rows[0]["customer_code"].ToString();
             CustomerName = _salesHeader.Rows[0]["customer_name"].ToString();
             SalesTaxRateId = 4;
@@ -38,12 +39,12 @@ namespace SalesEntry.ViewModels
             Total = 1100;
 
             // 明細データ作成
-            for (var i = 1; i < 9; i++)
+            for (var i = 1; i < 4; i++)
             {
                 var sd = new SalesDetail();
                 sd.LineNo = i;
-                //sd.ItemName = "A10" + i.ToString() + "  " + "B10" + i.ToString();
-                //sd.Qty =  (i * 10);
+                sd.ItemName = "A10" + i.ToString() + "  " + "B10" + i.ToString();
+                sd.Qty = (i * 10);
                 _salesDetails.Add(sd);
             }
 
@@ -69,12 +70,13 @@ namespace SalesEntry.ViewModels
         public string Subtotal { get; set; }
         public string SalesTax { get; set; }
         public int Total { get; set; }
-
         public ObservableCollection<SalesDetail> SalesDetails
         {
             get { return _salesDetails; }
             set { SetProperty(ref _salesDetails, value); }
         }
+
+
 
 
         public DelegateCommand PrintCommand { get; }
@@ -89,10 +91,11 @@ namespace SalesEntry.ViewModels
         }
         private void EntryCommandExecute()
         {
-            int slipNo = 0;
             // 登録ボタンを押したときの処理
-            slipNo = _salesEntryModel.RegistHeader(0, SlipDate, 1, 1, 2);
-            slipNo = _salesEntryModel.RegistDetail(slipNo, 1, 1, 23, 1, 1000, 900, 500, 0, 0, 2);
+
+            int slipNo = 0;
+            slipNo = _salesEntryModel.RegistHeader(0, SlipDate, CustomerCode, "0", "2");
+            slipNo = _salesEntryModel.RegistDetail(slipNo, _salesDetails);
             SlipNo = slipNo;
         }
 

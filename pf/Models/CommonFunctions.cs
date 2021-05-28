@@ -29,5 +29,48 @@ namespace pf.Models
                 return (int)dr[0];
             }
         }
+
+        public int CustomerCodeToId(string customerCode)
+        {
+            var dc = new DatabaseController();
+            dc.SQL = "SELECT "
+                    + " id "
+                    + "FROM customers "
+                    + "WHERE "
+                    + " state = 0 "
+                    + " AND customer_code = '" + customerCode + "'";
+            var dr = dc.ReadAsDataReader();
+            if (dr == null)
+            {
+                return -1;
+            }
+            else
+            {
+                dr.Read();
+                return (int)dr[0];
+            }
+        }
+
+        public int StaffCodeToId(string staffCode)
+        {
+            var dc = new DatabaseController();
+            dc.SQL = "SELECT "
+                    + " id "
+                    + "FROM staffs "
+                    + "WHERE "
+                    + " state = 0 "
+                    + " AND staff_code = '" + staffCode + "'";
+            var dr = dc.ReadAsDataReader();
+            if (dr == null)
+            {
+                return -1;
+            }
+            else
+            {
+                dr.Read();
+                return (int)dr[0];
+            }
+        }
+
     }
 }
