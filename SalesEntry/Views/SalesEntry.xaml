@@ -251,14 +251,14 @@
                              TextAlignment="Right"/>
                 </Grid>
 
-                <DataGrid ItemsSource="{Binding SalesDetails}"
+                <DataGrid ItemsSource="{Binding Path=SalesDetails}"
                           AutoGenerateColumns="False" 
                           CanUserReorderColumns="False" 
                           CanUserResizeColumns="False" 
                           CanUserSortColumns="False" 
                           CanUserResizeRows="False" 
                           CanUserAddRows="False" 
-                          GridLinesVisibility="Horizontal" BorderBrush="{x:Null}">
+                          GridLinesVisibility="Horizontal">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn  Binding="{Binding LineNo}" 
@@ -274,7 +274,7 @@
 
                         <DataGridTextColumn  Binding="{Binding ItemName}"                                              
                                              Width="450"/>
-                        
+
                         <DataGridTextColumn  Binding="{Binding Qty}" 
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
@@ -283,11 +283,11 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        
-                        <DataGridTextColumn  Binding="{Binding Unit}" 
+
+                        <DataGridTextColumn  Binding="{Binding UnitName}" 
                                              Width="80"/>
-                        
-                        <DataGridTextColumn  Binding="{Binding Cost}" 
+
+                        <DataGridTextColumn  Binding="{Binding UnitCost}" 
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -306,6 +306,7 @@
                         </DataGridTextColumn>
 
                         <DataGridTextColumn  Binding="{Binding Price}" 
+                                             IsReadOnly="True"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -313,6 +314,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
+
 
                     </DataGrid.Columns>
                 </DataGrid>

@@ -15,6 +15,19 @@ namespace SalesEntry.ViewModels
     {
         private DataTable _salesHeader = new DataTable();
         private Models.SalesEntryModel _salesEntryModel = new Models.SalesEntryModel();
+        private int _slipNo = 0;
+        private DateTime _slipDate;
+        private string _customerCode;
+        private string _customerName;
+        private int _salesTaxRateId;
+        private string _zipCode;
+        private string _address;
+        private string _tel;
+        private int _subtotal;
+        private int _salesTax;
+        private int _total;
+
+
         private ObservableCollection<SalesDetail> _salesDetails = new ObservableCollection<SalesDetail>();
 
         public SalesEntryViewModel()
@@ -22,12 +35,14 @@ namespace SalesEntry.ViewModels
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
-            // 初期値表示
-            //var m = new Models.SalesEntryModel();
-            _salesHeader = _salesEntryModel.SalesHeader(1);
 
-            SlipNo = (int)_salesHeader.Rows[0]["slip_no"];
             SlipDate = DateTime.Today;
+
+            /*
+            // 初期値表示
+
+            _salesHeader = _salesEntryModel.SalesHeader(1);
+            SlipNo = (int)_salesHeader.Rows[0]["slip_no"];
             CustomerCode = _salesHeader.Rows[0]["customer_code"].ToString();
             CustomerName = _salesHeader.Rows[0]["customer_name"].ToString();
             SalesTaxRateId = 4;
@@ -37,6 +52,8 @@ namespace SalesEntry.ViewModels
             Subtotal = "1,000";
             SalesTax = "100";
             Total = 1100;
+            */
+
 
             // 明細データ作成
             for (var i = 1; i < 4; i++)
@@ -59,17 +76,64 @@ namespace SalesEntry.ViewModels
             }
         }
 
-        public int SlipNo { get; set; }
-        public DateTime SlipDate { get; set; }
-        public string CustomerCode { get; set; }
-        public string CustomerName { get; set; }
-        public int SalesTaxRateId { get; set; }
-        public string ZipCode { get; set; }
-        public string Address { get; set; }
-        public string Tel { get; set; }
-        public string Subtotal { get; set; }
-        public string SalesTax { get; set; }
-        public int Total { get; set; }
+        public int SlipNo
+        {
+            get { return _slipNo; }
+            set { SetProperty(ref _slipNo, value); }
+        }
+        public DateTime SlipDate
+        {
+            get { return _slipDate; }
+            set { SetProperty(ref _slipDate, value); }
+        }
+        public string CustomerCode
+        {
+            get { return _customerCode; }
+            set { SetProperty(ref _customerCode, value); }
+        }
+        public string CustomerName
+        {
+            get { return _customerName; }
+            set { SetProperty(ref _customerName, value); }
+        }
+        public int SalesTaxRateId
+        {
+            get { return _salesTaxRateId; }
+            set { SetProperty(ref _salesTaxRateId, value); }
+        }
+        public string ZipCode
+        {
+            get { return _zipCode; }
+            set { SetProperty(ref _zipCode, value); }
+        }
+        public string Address
+        {
+            get { return _address; }
+            set { SetProperty(ref _address, value); }
+        }
+        public string Tel
+        {
+            get { return _tel; }
+            set { SetProperty(ref _tel, value); }
+        }
+
+        public int Subtotal
+        {
+            get { return _subtotal; }
+            set { SetProperty(ref _subtotal, value); }
+        }
+
+        public int SalesTax
+        {
+            get { return _salesTax; }
+            set { SetProperty(ref _salesTax, value); }
+        }
+        public int Total
+        {
+            get { return _total; }
+            set { SetProperty(ref _total, value); }
+        }
+
         public ObservableCollection<SalesDetail> SalesDetails
         {
             get { return _salesDetails; }
