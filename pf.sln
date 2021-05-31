@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentEntry", "PaymentEntr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainMenu", "MainMenu\MainMenu.csproj", "{143E6742-28F3-40EC-8388-EE94B8EDBCD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{BD55D8C8-3A6E-41A7-99B3-F38CBB4B7DC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{143E6742-28F3-40EC-8388-EE94B8EDBCD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{143E6742-28F3-40EC-8388-EE94B8EDBCD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{143E6742-28F3-40EC-8388-EE94B8EDBCD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD55D8C8-3A6E-41A7-99B3-F38CBB4B7DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD55D8C8-3A6E-41A7-99B3-F38CBB4B7DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD55D8C8-3A6E-41A7-99B3-F38CBB4B7DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD55D8C8-3A6E-41A7-99B3-F38CBB4B7DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -141,6 +141,15 @@
           "lib/net47/Unity.Container.dll": {}
         }
       },
+      "CustomControls/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CustomControls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomControls.dll": {}
+        }
+      },
       "pf/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
@@ -293,6 +302,15 @@
         },
         "runtime": {
           "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "CustomControls/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CustomControls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomControls.dll": {}
         }
       },
       "pf/1.0.0": {
@@ -449,6 +467,15 @@
           "lib/net47/Unity.Container.dll": {}
         }
       },
+      "CustomControls/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CustomControls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomControls.dll": {}
+        }
+      },
       "pf/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
@@ -601,6 +628,15 @@
         },
         "runtime": {
           "lib/net47/Unity.Container.dll": {}
+        }
+      },
+      "CustomControls/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CustomControls.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomControls.dll": {}
         }
       },
       "pf/1.0.0": {
@@ -892,6 +928,11 @@
         "unity.container.nuspec"
       ]
     },
+    "CustomControls/1.0.0": {
+      "type": "project",
+      "path": "../CustomControls/CustomControls.csproj",
+      "msbuildProject": "../CustomControls/CustomControls.csproj"
+    },
     "pf/1.0.0": {
       "type": "project",
       "path": "../pf/pf.csproj",
@@ -900,6 +941,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
+      "CustomControls >= 1.0.0",
       "MahApps.Metro >= 2.4.4",
       "Prism.Unity >= 8.0.0.1909",
       "pf >= 1.0.0"
@@ -938,6 +980,9 @@
       "frameworks": {
         "net472": {
           "projectReferences": {
+            "C:\\source\\repos\\pf\\CustomControls\\CustomControls.csproj": {
+              "projectPath": "C:\\source\\repos\\pf\\CustomControls\\CustomControls.csproj"
+            },
             "C:\\source\\repos\\pf\\pf\\pf.csproj": {
               "projectPath": "C:\\source\\repos\\pf\\pf\\pf.csproj"
             }
