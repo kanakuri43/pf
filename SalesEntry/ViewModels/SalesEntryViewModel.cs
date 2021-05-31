@@ -56,11 +56,11 @@ namespace SalesEntry.ViewModels
 
 
             // 明細データ作成
+            var sd = new SalesDetail();
             for (var i = 1; i < 4; i++)
             {
-                var sd = new SalesDetail();
                 sd.LineNo = i;
-                sd.ItemName = "A10" + i.ToString() + "  " + "B10" + i.ToString();
+                sd.ProductName = "A10" + i.ToString() + "  " + "B10" + i.ToString();
                 sd.Qty = (i * 10);
                 _salesDetails.Add(sd);
             }

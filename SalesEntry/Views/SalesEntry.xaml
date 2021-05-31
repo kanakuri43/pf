@@ -272,7 +272,7 @@
 
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn  Binding="{Binding ItemName}"                                              
+                        <DataGridTextColumn  Binding="{Binding ProductName}"                                              
                                              Width="450"/>
 
                         <DataGridTextColumn  Binding="{Binding Qty}" 
