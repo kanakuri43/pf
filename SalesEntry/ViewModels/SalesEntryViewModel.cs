@@ -56,7 +56,7 @@ namespace SalesEntry.ViewModels
 
 
             // 明細データ作成
-            for (var i = 1; i < 4; i++)
+            for (var i = 1; i < 11; i++)
             {
                 var sd = new SalesDetail();
                 sd.LineNo = i;
@@ -119,7 +119,11 @@ namespace SalesEntry.ViewModels
 
         public int Subtotal
         {
-            get { return _subtotal; }
+            get 
+            {
+                _subtotal = SalesDetails.Sum(x => ((int)x.UnitPrice * (int)x.Qty));
+                return _subtotal; 
+            }
             set { SetProperty(ref _subtotal, value); }
         }
 
@@ -137,7 +141,11 @@ namespace SalesEntry.ViewModels
         public ObservableCollection<SalesDetail> SalesDetails
         {
             get { return _salesDetails; }
-            set { SetProperty(ref _salesDetails, value); }
+            set 
+            {
+                Subtotal = SalesDetails.Sum(x => ((int)x.UnitPrice * (int)x.Qty));
+                SetProperty(ref _salesDetails, value); 
+            }
         }
 
 

@@ -215,7 +215,7 @@
                            Text="金額"/>
                 </Grid>
 
-                <DataGrid ItemsSource="{Binding Path=SalesDetails}"
+                <!--<DataGrid ItemsSource="{Binding Path=SalesDetails}"
                           AutoGenerateColumns="False" 
                           CanUserReorderColumns="False" 
                           CanUserResizeColumns="False" 
@@ -282,7 +282,7 @@
 
 
                     </DataGrid.Columns>
-                </DataGrid>
+                </DataGrid>-->
 
                 <custom:DataGridEx ItemsSource="{Binding Path=SalesDetails}"
                                    AutoGenerateColumns="False" 
@@ -294,32 +294,30 @@
                                    SelectionUnit="Cell"
                                    SelectionMode="Single"
                                    RowHeight="24"
-                                   HeadersVisibility="Row"
+                                   HeadersVisibility="All"
                                    RowHeaderWidth="30"
+                                   VerticalScrollBarVisibility="Visible"
+                                   Height="240"
                                    ClipboardCopyMode="ExcludeHeader">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
                     <DataGrid.RowHeaderStyle>
                         <Style TargetType="{x:Type DataGridRowHeader}">
-                            <Setter Property="Content" Value="{Binding LineNo}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
                         </Style>
                     </DataGrid.RowHeaderStyle>
 
                     <DataGrid.Columns>
-                        <!--<DataGridTextColumn  Binding="{Binding LineNo}" 
-                                             Width="30" 
-                                             IsReadOnly="True">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Center" />
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
 
-                        </DataGridTextColumn>-->
-
-                        <DataGridTextColumn  Binding="{Binding ProductName}"                                              
+                        <DataGridTextColumn  Binding="{Binding ProductName}"     
+                                             Header="商品"
                                              Width="450"/>
 
                         <DataGridTextColumn  Binding="{Binding Qty}" 
+                                             Header="数量"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -329,9 +327,11 @@
                         </DataGridTextColumn>
 
                         <DataGridTextColumn  Binding="{Binding UnitName}" 
+                                             Header="単位"
                                              Width="80"/>
 
                         <DataGridTextColumn  Binding="{Binding UnitCost}" 
+                                             Header="原価"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -341,6 +341,7 @@
                         </DataGridTextColumn>
 
                         <DataGridTextColumn  Binding="{Binding UnitPrice}" 
+                                             Header="単価"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
@@ -350,6 +351,7 @@
                         </DataGridTextColumn>
 
                         <DataGridTextColumn  Binding="{Binding Price}" 
+                                             Header="金額"
                                              IsReadOnly="True"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
