@@ -4,8 +4,9 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:prism="http://prismlibrary.com/"         
              xmlns:custom="clr-namespace:CustomControls;assembly=CustomControls"
-             prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid>
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             >
+    <Grid FocusManager.FocusedElement="{Binding ElementName=SlipNoTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
@@ -68,7 +69,8 @@
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Grid.Column="0"/>
-                    <TextBox Text="{Binding SlipNo}" 
+                    <TextBox x:Name="SlipNoTextBox" 
+                             Text="{Binding SlipNo}" 
                              Grid.Column="1"/>
 
                     <TextBlock Text="伝票日付"
@@ -155,143 +157,6 @@
 
             <!--detail-->
             <StackPanel Grid.Row="2" Orientation="Vertical">
-                <Grid Height="30"
-                  VerticalAlignment="top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="450"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="1"/>
-                    <Border Grid.Column="1"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="0,1,1,1"/>
-                    <Border Grid.Column="2"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="0,1,1,1"/>
-                    <Border Grid.Column="3"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="0,1,1,1"/>
-                    <Border Grid.Column="4"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="0,1,1,1"/>
-                    <Border Grid.Column="5"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="0,1,1,1"/>
-                    <Border Grid.Column="6"
-                        Background="AliceBlue"
-                        BorderBrush="RoyalBlue"
-                        BorderThickness="0,1,1,1"/>
-                    <TextBlock Grid.Column="0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="行"/>
-                    <TextBlock Grid.Column="1"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="商品"/>
-                    <TextBlock Grid.Column="2"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="数量"/>
-                    <TextBlock Grid.Column="3"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="単位"/>
-                    <TextBlock Grid.Column="4"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="原価"/>
-                    <TextBlock Grid.Column="5"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="売価"/>
-                    <TextBlock Grid.Column="6"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Text="金額"/>
-                </Grid>
-
-                <!--<DataGrid ItemsSource="{Binding Path=SalesDetails}"
-                          AutoGenerateColumns="False" 
-                          CanUserReorderColumns="False" 
-                          CanUserResizeColumns="False" 
-                          CanUserSortColumns="False" 
-                          CanUserResizeRows="False" 
-                          CanUserAddRows="False" 
-                          HeadersVisibility="None"
-                          GridLinesVisibility="Horizontal">
-
-                    <DataGrid.Columns>
-                        <DataGridTextColumn  Binding="{Binding LineNo}" 
-                                             Width="30" 
-                                             IsReadOnly="True">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Center" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-
-                        </DataGridTextColumn>
-
-                        <DataGridTextColumn  Binding="{Binding ProductName}"                                              
-                                             Width="450"/>
-
-                        <DataGridTextColumn  Binding="{Binding Qty}" 
-                                             Width="100">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-
-                        <DataGridTextColumn  Binding="{Binding UnitName}" 
-                                             Width="80"/>
-
-                        <DataGridTextColumn  Binding="{Binding UnitCost}" 
-                                             Width="100">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-
-                        <DataGridTextColumn  Binding="{Binding UnitPrice}" 
-                                             Width="100">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-
-                        <DataGridTextColumn  Binding="{Binding Price}" 
-                                             IsReadOnly="True"
-                                             Width="100">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Right" />
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
-
-
-                    </DataGrid.Columns>
-                </DataGrid>-->
 
                 <custom:DataGridEx ItemsSource="{Binding Path=SalesDetails}"
                                    AutoGenerateColumns="False" 
@@ -307,6 +172,7 @@
                                    RowHeaderWidth="30"
                                    VerticalScrollBarVisibility="Visible"
                                    Height="240"
+                                   HorizontalAlignment="Left"
                                    ClipboardCopyMode="ExcludeHeader">
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="DataGridColumnHeader">

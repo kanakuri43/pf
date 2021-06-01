@@ -161,6 +161,19 @@ namespace SalesEntry.ViewModels
         private void CustomerSearchCommandExecute(string customerCode)
         {
             Console.WriteLine(customerCode);
+            var cf = new CommonFunctions();
+            var ci = cf.CustomerCodeToId(customerCode);
+            if (ci == -1)
+            {
+                Console.WriteLine("得意先が見つかりません");
+                return;
+            }
+            var c = new Customer(ci);
+
+            CustomerName = c.CustomerName;
+            Address = c.Address;
+            Tel = c.Tel;
+
         }
 
         private void PrintCommandExecute()

@@ -9,14 +9,10 @@ namespace pf.Models
 {
     public class Operator
     {
-        //private string _operatorCode;
-        //private int _operatorId;
         private DataTable _operatorDataTable;
 
         public Operator(int operatorId)
         {
-            //_operatorId = operatorId;
-
             var dc = new DatabaseController();
             dc.SQL = "SELECT "
                     + " * "
@@ -28,17 +24,11 @@ namespace pf.Models
         }
         public string OperatorCode
         {
-            get
-            {
-                return _operatorDataTable.Rows[0]["operator_code"].ToString();
-            }
+            get { return _operatorDataTable.Rows[0]["operator_code"].ToString(); }
         }
         public string OperatorName
         {
-            get 
-            {
-                return _operatorDataTable.Rows[0]["operator_name"].ToString(); 
-            }
+            get { return _operatorDataTable.Rows[0]["operator_name"].ToString(); }
         }
 
 

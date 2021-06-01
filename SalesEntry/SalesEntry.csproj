@@ -59,10 +59,18 @@
     </ApplicationDefinition>
     <Compile Include="Models\SalesDetail.cs" />
     <Compile Include="Models\SalesEntryModel.cs" />
+    <Compile Include="ViewModels\CustomerSerchViewModel.cs" />
     <Compile Include="ViewModels\SalesEntryViewModel.cs" />
+    <Compile Include="Views\CustomerSerch.xaml.cs">
+      <DependentUpon>CustomerSerch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SalesEntry.xaml.cs">
       <DependentUpon>SalesEntry.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CustomerSerch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
