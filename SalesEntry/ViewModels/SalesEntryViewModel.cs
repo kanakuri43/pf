@@ -32,6 +32,7 @@ namespace SalesEntry.ViewModels
 
         public SalesEntryViewModel()
         {
+            CustomerSearchCommand = new DelegateCommand<string>(CustomerSearchCommandExecute);
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
@@ -151,16 +152,23 @@ namespace SalesEntry.ViewModels
 
 
 
+        public DelegateCommand<string> CustomerSearchCommand { get; }
         public DelegateCommand PrintCommand { get; }
         public DelegateCommand EntryCommand { get; }
-         
 
+
+
+        private void CustomerSearchCommandExecute(string customerCode)
+        {
+            Console.WriteLine(customerCode);
+        }
 
         private void PrintCommandExecute()
         {
             // 印刷ボタンを押したときの処理
 
         }
+
         private void EntryCommandExecute()
         {
             // 登録ボタンを押したときの処理

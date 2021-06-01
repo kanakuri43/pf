@@ -119,8 +119,17 @@
                                Grid.Column="0"
                                VerticalAlignment="Center"/>
                     <TextBox Grid.Column="1"
-                             Text="{Binding CustomerCode}"/>
+                             x:Name="CustomerCode"                              
+                             Text="{Binding CustomerCode}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Gesture="Enter" 
+                                        Command="{Binding CustomerSearchCommand}" 
+                                        CommandParameter="{Binding ElementName=CustomerCode, Path=Text}"/>
+                        </TextBox.InputBindings>
+
+                    </TextBox>
                     <TextBox Grid.Column="2"
+                             IsReadOnly="True"
                              Text="{Binding CustomerName}"/>
                 </Grid>
                 <Grid Grid.Row="2">
@@ -304,8 +313,9 @@
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
+
                     <DataGrid.RowHeaderStyle>
-                        <Style TargetType="{x:Type DataGridRowHeader}">
+                        <Style TargetType="DataGridRowHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                         </Style>
                     </DataGrid.RowHeaderStyle>
@@ -328,6 +338,7 @@
 
                         <DataGridTextColumn  Binding="{Binding UnitName}" 
                                              Header="単位"
+                                             IsReadOnly="True"
                                              Width="80"/>
 
                         <DataGridTextColumn  Binding="{Binding UnitCost}" 

@@ -11,5 +11,6 @@ namespace SalesEntry.Views
         {
             InitializeComponent();
         }
+
     }
 }
