@@ -214,43 +214,6 @@
                            HorizontalAlignment="Center"
                            Text="金額"/>
                 </Grid>
-                <!--<Grid Grid.Row="2"
-                      Height="30"
-                      VerticalAlignment="top">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="450"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="80"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBox Grid.Column="0" 
-                             Text="1"
-                             TextAlignment="Right"/>
-                    <TextBox Grid.Column="1" 
-                             Text="MO-150-MC-BK ハイマッキー"/>
-                    <TextBox Grid.Column="2" 
-                             Text="100"
-                             TextAlignment="Right"/>
-                    <TextBox Grid.Column="3" 
-                             Text="個"  />
-                    <TextBox Grid.Column="4" 
-                             Text="80"                             
-                             TextAlignment="Right"/>
-                    <TextBox Grid.Column="5" 
-                             Text="100"                             
-                             TextAlignment="Right"/>
-                    <TextBox Grid.Column="6" 
-                             Text="1000"                             
-                             TextAlignment="Right"/>
-                </Grid>-->
 
                 <DataGrid ItemsSource="{Binding Path=SalesDetails}"
                           AutoGenerateColumns="False" 
@@ -259,6 +222,7 @@
                           CanUserSortColumns="False" 
                           CanUserResizeRows="False" 
                           CanUserAddRows="False" 
+                          HeadersVisibility="None"
                           GridLinesVisibility="Horizontal">
 
                     <DataGrid.Columns>
@@ -327,21 +291,30 @@
                                    CanUserSortColumns="False" 
                                    CanUserResizeRows="False" 
                                    CanUserAddRows="False" 
-                                   GridLinesVisibility="Horizontal"
                                    SelectionUnit="Cell"
                                    SelectionMode="Single"
+                                   RowHeight="24"
+                                   HeadersVisibility="Row"
+                                   RowHeaderWidth="30"
                                    ClipboardCopyMode="ExcludeHeader">
+                    <DataGrid.RowHeaderStyle>
+                        <Style TargetType="{x:Type DataGridRowHeader}">
+                            <Setter Property="Content" Value="{Binding LineNo}"/>
+                        </Style>
+                    </DataGrid.RowHeaderStyle>
+
                     <DataGrid.Columns>
-                        <DataGridTextColumn  Binding="{Binding LineNo}" 
+                        <!--<DataGridTextColumn  Binding="{Binding LineNo}" 
                                              Width="30" 
                                              IsReadOnly="True">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
 
-                        </DataGridTextColumn>
+                        </DataGridTextColumn>-->
 
                         <DataGridTextColumn  Binding="{Binding ProductName}"                                              
                                              Width="450"/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,20 @@ namespace CustomControls
     {
         public DataGridEx() : base()
         {
+            this.DataContextChanged += (sender, e) =>
+            {
+                if (!(e.NewValue is DataTable)) { return; }
+                var dt = (DataTable)e.NewValue;
+                if (!dt.Columns.Contains(RowIndexName)) { dt.Columns.Add(RowIndexName, typeof(int)); }
+                foreach (var dr in dt.AsEnumerable().Select((a, index) => new { V = a, I = index }))
+                {
+                    dr.V[RowIndexName] = dr.I + 1;
+                }
+            };
 
         }
+
+        public static string RowIndexName => "LineNo";
 
         /// <summary>
         /// ｷｰﾀﾞｳﾝ時のｲﾍﾞﾝﾄ
@@ -144,5 +157,16 @@ namespace CustomControls
                 ((DataGridCell)fe).IsSelected = true;
             }
         }
+        protected override void OnSorting(DataGridSortingEventArgs eventArgs)
+        {
+            base.OnSorting(eventArgs);
+            foreach (var index in Enumerable.Range(0, this.Items.Count))
+            {
+                var r = this.Items[index] as DataRowView;
+                if (r == null) { return; }
+                r[RowIndexName] = index + 1;
+            }
+        }
+
     }
 }
