@@ -127,6 +127,9 @@
                             <KeyBinding Gesture="Enter" 
                                         Command="{Binding CustomerSearchCommand}" 
                                         CommandParameter="{Binding ElementName=CustomerCode, Path=Text}"/>
+                            <KeyBinding Gesture="Space" 
+                                        Command="{Binding CustomerSearchCommand}" 
+                                        CommandParameter="{Binding ElementName=CustomerCode, Path=Text}"/>
                         </TextBox.InputBindings>
 
                     </TextBox>
@@ -145,14 +148,25 @@
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="1"
                              TextAlignment="Left"
+                             IsReadOnly="True"
                              Text="{Binding ZipCode}"/>
                     <TextBox Grid.Column="2"
+                             IsReadOnly="True"
                              TextAlignment="Left"
                              Text="{Binding Address}"/>
                     <TextBox Grid.Column="3"
+                             IsReadOnly="True"
                              Text="{Binding Tel}"/>
 
                 </Grid>
+                <Grid Grid.Row="3">
+                    <Label FontSize= "12"
+                           Foreground="Tomato"
+                           Margin="100,0,0,0" 
+                           Content="{Binding MessageString}"    />
+
+                </Grid>
+                
             </Grid>
 
             <!--detail-->

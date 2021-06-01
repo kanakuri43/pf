@@ -23,6 +23,7 @@ namespace SalesEntry.ViewModels
         private string _zipCode;
         private string _address;
         private string _tel;
+        private string _messageString;
         private int _subtotal;
         private int _salesTax;
         private int _total;
@@ -39,9 +40,11 @@ namespace SalesEntry.ViewModels
 
             SlipDate = DateTime.Today;
 
-            /*
-            // 初期値表示
+            // 初期値表示`
+            MessageString = "";
 
+
+            /*
             _salesHeader = _salesEntryModel.SalesHeader(1);
             SlipNo = (int)_salesHeader.Rows[0]["slip_no"];
             CustomerCode = _salesHeader.Rows[0]["customer_code"].ToString();
@@ -117,6 +120,12 @@ namespace SalesEntry.ViewModels
             get { return _tel; }
             set { SetProperty(ref _tel, value); }
         }
+        public string MessageString
+        {
+            get { return _messageString; }
+            set { SetProperty(ref _messageString, value); }
+        }
+
 
         public int Subtotal
         {
@@ -160,19 +169,31 @@ namespace SalesEntry.ViewModels
 
         private void CustomerSearchCommandExecute(string customerCode)
         {
-            Console.WriteLine(customerCode);
-            var cf = new CommonFunctions();
-            var ci = cf.CustomerCodeToId(customerCode);
-            if (ci == -1)
-            {
-                Console.WriteLine("得意先が見つかりません");
-                return;
-            }
-            var c = new Customer(ci);
+            MessageString = "";
 
-            CustomerName = c.CustomerName;
-            Address = c.Address;
-            Tel = c.Tel;
+            if (customerCode == "")
+            {
+                // 空欄だったら検索ウインドウ表示
+
+            }
+            else
+            {
+                // コードが入力されていたらマスタを検索
+
+                var cf = new CommonFunctions();
+                var ci = cf.CustomerCodeToId(customerCode);
+                if (ci == -1)
+                {
+                    MessageString = "得意先が見つかりません";
+                    return;
+                }
+                var c = new Customer(ci);
+
+                CustomerName = c.CustomerName;
+                Address = c.Address;
+                Tel = c.Tel;
+
+            }
 
         }
 
