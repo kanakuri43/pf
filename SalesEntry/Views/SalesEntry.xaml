@@ -214,7 +214,7 @@
                            HorizontalAlignment="Center"
                            Text="金額"/>
                 </Grid>
-                <Grid Grid.Row="2"
+                <!--<Grid Grid.Row="2"
                       Height="30"
                       VerticalAlignment="top">
                     <Grid.RowDefinitions>
@@ -250,7 +250,7 @@
                     <TextBox Grid.Column="6" 
                              Text="1000"                             
                              TextAlignment="Right"/>
-                </Grid>
+                </Grid>-->
 
                 <DataGrid ItemsSource="{Binding Path=SalesDetails}"
                           AutoGenerateColumns="False" 
@@ -320,7 +320,76 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <custom:DataGridEx />
+                <custom:DataGridEx ItemsSource="{Binding Path=SalesDetails}"
+                                   AutoGenerateColumns="False" 
+                                   CanUserReorderColumns="False" 
+                                   CanUserResizeColumns="False" 
+                                   CanUserSortColumns="False" 
+                                   CanUserResizeRows="False" 
+                                   CanUserAddRows="False" 
+                                   GridLinesVisibility="Horizontal"
+                                   SelectionUnit="Cell"
+                                   SelectionMode="Single"
+                                   ClipboardCopyMode="ExcludeHeader">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Binding="{Binding LineNo}" 
+                                             Width="30" 
+                                             IsReadOnly="True">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding ProductName}"                                              
+                                             Width="450"/>
+
+                        <DataGridTextColumn  Binding="{Binding Qty}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding UnitName}" 
+                                             Width="80"/>
+
+                        <DataGridTextColumn  Binding="{Binding UnitCost}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding UnitPrice}" 
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn  Binding="{Binding Price}" 
+                                             IsReadOnly="True"
+                                             Width="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextAlignment" Value="Right" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+
+                    </DataGrid.Columns>
+                </custom:DataGridEx>
+
 
             </StackPanel>
 
