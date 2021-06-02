@@ -8,6 +8,8 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using SalesEntry.Models;
 using pf.Models;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace SalesEntry.ViewModels
 {
@@ -33,7 +35,7 @@ namespace SalesEntry.ViewModels
 
         public SalesEntryViewModel()
         {
-            CustomerSearchCommand = new DelegateCommand<string>(CustomerSearchCommandExecute);
+            CustomerSearchCommand = new DelegateCommand<TextBox>(CustomerSearchCommandExecute);
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
@@ -161,17 +163,16 @@ namespace SalesEntry.ViewModels
 
 
 
-        public DelegateCommand<string> CustomerSearchCommand { get; }
+        public DelegateCommand<TextBox> CustomerSearchCommand { get; }
         public DelegateCommand PrintCommand { get; }
         public DelegateCommand EntryCommand { get; }
 
 
 
-        private void CustomerSearchCommandExecute(string customerCode)
+        private void CustomerSearchCommandExecute(TextBox customerCode)
         {
             MessageString = "";
-
-            if (customerCode == "")
+            if (customerCode.Text == "")
             {
                 // 空欄だったら検索ウインドウ表示
 
@@ -181,7 +182,7 @@ namespace SalesEntry.ViewModels
                 // コードが入力されていたらマスタを検索
 
                 var cf = new CommonFunctions();
-                var ci = cf.CustomerCodeToId(customerCode);
+                var ci = cf.CustomerCodeToId(customerCode.Text);
                 if (ci == -1)
                 {
                     MessageString = "得意先が見つかりません";
@@ -192,6 +193,10 @@ namespace SalesEntry.ViewModels
                 CustomerName = c.CustomerName;
                 Address = c.Address;
                 Tel = c.Tel;
+
+                //UIElement element =  as UIElement;
+                customerCode.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
 
             }
 

@@ -74,6 +74,7 @@
     <Compile Include="Models\DatabaseController.cs" />
     <Compile Include="Models\Operator.cs" />
     <Compile Include="Models\SalesTaxRate.cs" />
+    <Compile Include="Models\UIElementBehavior.cs" />
     <Compile Include="ViewModels\CustomerSearchViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\CustomerSearch.xaml.cs">

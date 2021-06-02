@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:prism="http://prismlibrary.com/"         
+             xmlns:pf="clr-namespace:pf.Models;assembly=pf"
              xmlns:custom="clr-namespace:CustomControls;assembly=CustomControls"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid FocusManager.FocusedElement="{Binding ElementName=SlipNoTextBox}">
@@ -70,14 +71,18 @@
                                Grid.Column="0"/>
                     <TextBox x:Name="SlipNoTextBox" 
                              Text="{Binding SlipNo}" 
-                             Grid.Column="1"/>
+                             Grid.Column="1"
+                             pf:UIElementBehavior.EnterCommand="True"/>
 
                     <TextBlock Text="伝票日付"
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Grid.Column="2"/>
+
                     <DatePicker SelectedDate="{Binding SlipDate}"
-                                Grid.Column="3"/>
+                                Grid.Column="3"
+                                pf:UIElementBehavior.EnterCommand="True"/>
+                    
 
                     <TextBlock Text="受注番号"
                                TextAlignment="Center"
@@ -124,13 +129,11 @@
                     <TextBox Grid.Column="1"
                              x:Name="CustomerCode"                              
                              Text="{Binding CustomerCode}">
+
                         <TextBox.InputBindings>
-                            <KeyBinding Gesture="Enter" 
-                                        Command="{Binding CustomerSearchCommand}" 
-                                        CommandParameter="{Binding ElementName=CustomerCode, Path=Text}"/>
-                            <KeyBinding Gesture="Space" 
-                                        Command="{Binding CustomerSearchCommand}" 
-                                        CommandParameter="{Binding ElementName=CustomerCode, Path=Text}"/>
+                                <KeyBinding Gesture="Enter" 
+                                            Command="{Binding CustomerSearchCommand}" 
+                                            CommandParameter="{Binding ElementName=CustomerCode}"/>
                         </TextBox.InputBindings>
 
                     </TextBox>
@@ -179,7 +182,8 @@
                                    Grid.Column="0"
                                    VerticalAlignment="Center"/>
                     <TextBox Grid.Column="1" 
-                             Grid.ColumnSpan="2" />
+                             Grid.ColumnSpan="2" 
+                             pf:UIElementBehavior.EnterCommand="True"/>
 
                 </Grid>
 
