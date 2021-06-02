@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
+using pf;
 
 namespace SalesEntry
 {
@@ -18,6 +19,7 @@ namespace SalesEntry
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Views.SalesEntry>();
+            containerRegistry.RegisterForNavigation<pf.Views.CustomerSearch>();
         }
     }
 }

@@ -4,8 +4,7 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:prism="http://prismlibrary.com/"         
              xmlns:custom="clr-namespace:CustomControls;assembly=CustomControls"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             >
+             prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid FocusManager.FocusedElement="{Binding ElementName=SlipNoTextBox}">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -85,6 +84,7 @@
                                VerticalAlignment="Center"
                                Grid.Column="4"/>
                     <TextBox Text="{Binding OderSlipNo}" 
+                             IsTabStop="False"
                              Grid.Column="5"/>
 
                     <TextBlock Text="消費税率"
@@ -95,6 +95,7 @@
                               SelectedValuePath="id"
                               DisplayMemberPath="tax_rate"
                               Grid.Column="7"
+                              IsTabStop="False"
                               SelectedValue="{Binding SalesTaxRateId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </ComboBox>
 
@@ -136,6 +137,20 @@
                     <TextBox Grid.Column="2"
                              IsReadOnly="True"
                              Text="{Binding CustomerName}"/>
+
+                    <TextBox Grid.Column="3"
+                             TextAlignment="Left"
+                             IsReadOnly="True"
+                             Text="{Binding ZipCode}"/>
+                    <TextBox Grid.Column="4"
+                             IsReadOnly="True"
+                             TextAlignment="Left"
+                             Text="{Binding Address}"/>
+                    <TextBox Grid.Column="5"
+                             IsReadOnly="True"
+                             Text="{Binding Tel}"/>
+
+
                 </Grid>
                 <Grid Grid.Row="2">
                     <!--heder.3-->
@@ -146,27 +161,28 @@
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="1"
-                             TextAlignment="Left"
-                             IsReadOnly="True"
-                             Text="{Binding ZipCode}"/>
-                    <TextBox Grid.Column="2"
-                             IsReadOnly="True"
-                             TextAlignment="Left"
-                             Text="{Binding Address}"/>
-                    <TextBox Grid.Column="3"
-                             IsReadOnly="True"
-                             Text="{Binding Tel}"/>
-
                 </Grid>
                 <Grid Grid.Row="3">
-                    <Label FontSize= "12"
-                           Foreground="Tomato"
-                           Margin="100,0,0,0" 
-                           Content="{Binding MessageString}"    />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="AliceBlue"
+                            Grid.Row="0"
+                            Grid.ColumnSpan="1"
+                            BorderBrush="RoyalBlue"
+                            BorderThickness="0,1,0,1"/>
+
+                    <TextBlock Text="伝票摘要"
+                                   TextAlignment="Center"
+                                   Grid.Column="0"
+                                   VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" 
+                             Grid.ColumnSpan="2" />
 
                 </Grid>
-                
+
             </Grid>
 
             <!--detail-->
@@ -185,7 +201,7 @@
                                    HeadersVisibility="All"
                                    RowHeaderWidth="30"
                                    VerticalScrollBarVisibility="Visible"
-                                   Height="240"
+                                   Height="264"
                                    HorizontalAlignment="Left"
                                    ClipboardCopyMode="ExcludeHeader">
                     <DataGrid.ColumnHeaderStyle>
@@ -291,11 +307,6 @@
                             BorderBrush="RoyalBlue"
                             BorderThickness="0,0,0,1"/>
 
-                        <TextBlock Text="伝票摘要" 
-                                   VerticalAlignment="Center"
-                                   Grid.Column="0" 
-                                   TextAlignment="Center"/>
-                        <TextBox Grid.Column="1" Grid.ColumnSpan="2" />
                     </Grid>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>

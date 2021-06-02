@@ -57,9 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\CustomerSerch.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\CustomerSearch.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -74,9 +74,10 @@
     <Compile Include="Models\DatabaseController.cs" />
     <Compile Include="Models\Operator.cs" />
     <Compile Include="Models\SalesTaxRate.cs" />
+    <Compile Include="ViewModels\CustomerSearchViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\CustomerSerch.xaml.cs">
-      <DependentUpon>CustomerSerch.xaml</DependentUpon>
+    <Compile Include="Views\CustomerSearch.xaml.cs">
+      <DependentUpon>CustomerSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
