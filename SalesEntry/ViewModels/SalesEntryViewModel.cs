@@ -36,6 +36,7 @@ namespace SalesEntry.ViewModels
         public SalesEntryViewModel()
         {
             CustomerSearchCommand = new DelegateCommand<TextBox>(CustomerSearchCommandExecute);
+            ProductSearchCommand = new DelegateCommand<DataGrid>(ProductSearchCommandExecute);
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
@@ -44,32 +45,15 @@ namespace SalesEntry.ViewModels
 
             // 初期値表示`
             MessageString = "";
-
-
-            /*
-            _salesHeader = _salesEntryModel.SalesHeader(1);
-            SlipNo = (int)_salesHeader.Rows[0]["slip_no"];
-            CustomerCode = _salesHeader.Rows[0]["customer_code"].ToString();
-            CustomerName = _salesHeader.Rows[0]["customer_name"].ToString();
-            SalesTaxRateId = 4;
-            ZipCode = _salesHeader.Rows[0]["zip_code"].ToString();
-            Address = _salesHeader.Rows[0]["address"].ToString();
-            Tel = _salesHeader.Rows[0]["tel"].ToString();
-            Subtotal = "1,000";
-            SalesTax = "100";
-            Total = 1100;
-            */
-
-
+            
             // 明細データ作成
             for (var i = 1; i < 11; i++)
             {
                 var sd = new SalesDetail();
                 sd.LineNo = i;
-                sd.ProductName = "A10" + i.ToString() + "  " + "B10" + i.ToString();
-                sd.Qty = (i * 10);
                 _salesDetails.Add(sd);
             }
+            
 
         }
 
@@ -164,6 +148,7 @@ namespace SalesEntry.ViewModels
 
 
         public DelegateCommand<TextBox> CustomerSearchCommand { get; }
+        public DelegateCommand<DataGrid> ProductSearchCommand { get; }
         public DelegateCommand PrintCommand { get; }
         public DelegateCommand EntryCommand { get; }
 
@@ -199,6 +184,10 @@ namespace SalesEntry.ViewModels
 
 
             }
+        }
+
+        private void ProductSearchCommandExecute(DataGrid SalesDetailsDataGrid)
+        {
 
         }
 

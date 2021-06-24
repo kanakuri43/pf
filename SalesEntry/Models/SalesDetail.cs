@@ -10,6 +10,7 @@ namespace SalesEntry.Models
     public class SalesDetail : BindableBase
     {
         private int _productId;
+        private string _productCode;
         private string _productName;
         private double _qty;
         private int _unitId;
@@ -24,6 +25,12 @@ namespace SalesEntry.Models
         {
             get { return _productId; }
             set { SetProperty(ref _productId, value); }
+        }
+
+        public string ProductCode
+        {
+            get { return _productCode; }
+            set { SetProperty(ref _productCode, value); }
         }
 
         public string ProductName

@@ -90,6 +90,7 @@
                                VerticalAlignment="Center"
                                Grid.Column="4"/>
                     <TextBox Text="{Binding OderSlipNo}" 
+                             IsEnabled="False"
                              IsTabStop="False"
                              Grid.Column="5"/>
 
@@ -130,7 +131,6 @@
                     <TextBox Grid.Column="1"
                              x:Name="CustomerCodeTextBox"                              
                              Text="{Binding CustomerCode}">
-
                         <TextBox.InputBindings>
                                 <KeyBinding Gesture="Enter" 
                                             Command="{Binding CustomerSearchCommand}" 
@@ -198,6 +198,7 @@
             <StackPanel Grid.Row="2" Orientation="Vertical">
 
                 <custom:DataGridEx ItemsSource="{Binding Path=SalesDetails}"
+                                   x:Name="SalesDetailsDataGrid"
                                    AutoGenerateColumns="False" 
                                    CanUserReorderColumns="False" 
                                    CanUserResizeColumns="False" 
@@ -209,7 +210,7 @@
                                    RowHeight="24"
                                    HeadersVisibility="All"
                                    RowHeaderWidth="30"
-                                   VerticalScrollBarVisibility="Visible"
+                                   VerticalScrollBarVisibility="Disabled"
                                    Height="264"
                                    HorizontalAlignment="Left"
                                    ClipboardCopyMode="ExcludeHeader">
@@ -224,16 +225,34 @@
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                         </Style>
                     </DataGrid.RowHeaderStyle>
+                    
+                    <DataGrid.InputBindings>
+                        <KeyBinding Gesture="Enter" 
+                                            Command="{Binding ProductSearchCommand}" 
+                                            CommandParameter="{Binding ElementName=SalesDetailsDataGrid}"/>
+                    </DataGrid.InputBindings>
 
                     <DataGrid.Columns>
 
+                        <DataGridTextColumn  Binding="{Binding ProductCode}"     
+                                             Header="商品コード"
+                                             Width="100">
+                            
+                        </DataGridTextColumn>
+                        
                         <DataGridTextColumn  Binding="{Binding ProductName}"     
                                              Header="商品"
-                                             Width="450"/>
+                                             Width="400">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
 
-                        <DataGridTextColumn  Binding="{Binding Qty}" 
+                        <DataGridTextColumn  Binding="{Binding Qty, StringFormat={}{0:N0}}" 
                                              Header="数量"
-                                             Width="100">
+                                             Width="80">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="TextAlignment" Value="Right" />
@@ -244,9 +263,9 @@
                         <DataGridTextColumn  Binding="{Binding UnitName}" 
                                              Header="単位"
                                              IsReadOnly="True"
-                                             Width="80"/>
+                                             Width="60"/>
 
-                        <DataGridTextColumn  Binding="{Binding UnitCost}" 
+                        <DataGridTextColumn  Binding="{Binding UnitCost, StringFormat={}{0:N0}}" 
                                              Header="原価"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
@@ -256,7 +275,7 @@
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn  Binding="{Binding UnitPrice}" 
+                        <DataGridTextColumn  Binding="{Binding UnitPrice, StringFormat={}{0:N0}}" 
                                              Header="単価"
                                              Width="100">
                             <DataGridTextColumn.ElementStyle>
@@ -266,7 +285,7 @@
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
 
-                        <DataGridTextColumn  Binding="{Binding Price}" 
+                        <DataGridTextColumn  Binding="{Binding Price, StringFormat={}{0:N0}}" 
                                              Header="金額"
                                              IsReadOnly="True"
                                              Width="100">
