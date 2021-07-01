@@ -30,7 +30,11 @@ namespace SalesEntry.Models
         public string ProductCode
         {
             get { return _productCode; }
-            set { SetProperty(ref _productCode, value); }
+            set 
+            {
+                Console.WriteLine(value);
+                SetProperty(ref _productCode, value); 
+            }
         }
 
         public string ProductName

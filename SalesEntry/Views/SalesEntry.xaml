@@ -226,11 +226,11 @@
                         </Style>
                     </DataGrid.RowHeaderStyle>
                     
-                    <DataGrid.InputBindings>
+                    <!--<DataGrid.InputBindings>
                         <KeyBinding Gesture="Enter" 
-                                            Command="{Binding ProductSearchCommand}" 
-                                            CommandParameter="{Binding ElementName=SalesDetailsDataGrid}"/>
-                    </DataGrid.InputBindings>
+                                    Command="{Binding ProductSearchCommand}" 
+                                    CommandParameter="{Binding ElementName=SalesDetailsDataGrid}"/>
+                    </DataGrid.InputBindings>-->
 
                     <DataGrid.Columns>
 

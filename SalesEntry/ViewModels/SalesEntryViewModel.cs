@@ -43,7 +43,7 @@ namespace SalesEntry.ViewModels
 
             SlipDate = DateTime.Today;
 
-            // 初期値表示`
+            // 初期値表示
             MessageString = "";
             
             // 明細データ作成
