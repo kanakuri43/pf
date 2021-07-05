@@ -72,5 +72,26 @@ namespace pf.Models
             }
         }
 
+        public int ProductCodeToId(string productCode)
+        {
+            var dc = new DatabaseController();
+            dc.SQL = "SELECT "
+                    + " id "
+                    + "FROM products "
+                    + "WHERE "
+                    + " state = 0 "
+                    + " AND product_code = '" + productCode + "'";
+            var dr = dc.ReadAsDataReader();
+            if (dr == null)
+            {
+                return -1;
+            }
+            else
+            {
+                dr.Read();
+                return (int)dr[0];
+            }
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using pf.Models;
 
 namespace SalesEntry.Models
 {
@@ -32,8 +33,18 @@ namespace SalesEntry.Models
             get { return _productCode; }
             set 
             {
-                Console.WriteLine(value);
-                SetProperty(ref _productCode, value); 
+                SetProperty(ref _productCode, value);
+
+                var cf = new CommonFunctions();
+                var pi = cf.ProductCodeToId(ProductCode);
+                if (pi == -1)
+                {
+                    ProductName = "商品が見つかりません";
+                    return;
+                }
+                var p = new Product(pi);
+
+                ProductName = p.ProductName;
             }
         }
 
