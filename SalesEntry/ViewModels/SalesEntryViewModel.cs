@@ -29,14 +29,11 @@ namespace SalesEntry.ViewModels
         private int _subtotal;
         private int _salesTax;
         private int _total;
-
-
         private ObservableCollection<SalesDetail> _salesDetails = new ObservableCollection<SalesDetail>();
 
         public SalesEntryViewModel()
         {
             CustomerSearchCommand = new DelegateCommand<TextBox>(CustomerSearchCommandExecute);
-            ProductSearchCommand = new DelegateCommand<DataGrid>(ProductSearchCommandExecute);
             PrintCommand = new DelegateCommand(PrintCommandExecute);
             EntryCommand = new DelegateCommand(EntryCommandExecute);
 
@@ -47,7 +44,7 @@ namespace SalesEntry.ViewModels
             MessageString = "";
             
             // 明細データ作成
-            for (var i = 1; i < 11; i++)
+            for (var i = 1; i < 8; i++)
             {
                 var sd = new SalesDetail();
                 sd.LineNo = i;
@@ -117,7 +114,6 @@ namespace SalesEntry.ViewModels
         {
             get 
             {
-                _subtotal = SalesDetails.Sum(x => ((int)x.UnitPrice * (int)x.Qty));
                 return _subtotal; 
             }
             set { SetProperty(ref _subtotal, value); }
@@ -184,11 +180,6 @@ namespace SalesEntry.ViewModels
 
 
             }
-        }
-
-        private void ProductSearchCommandExecute(DataGrid SalesDetailsDataGrid)
-        {
-
         }
 
         private void PrintCommandExecute()
