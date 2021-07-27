@@ -13,13 +13,13 @@ namespace SalesEntry.Models
         private int _productId;
         private string _productCode;
         private string _productName;
-        private double _qty;
+        private int _qty;
         private int _unitId;
         private string _unitName;
-        private double _unitCost;
-        private double _unitPrice;
-        private double _catalogPrice;
-        private double _price;
+        private int _unitCost;
+        private int _unitPrice;
+        private int _catalogPrice;
+        private int _price;
 
         public int LineNo { get; set; }
         public int ProductId
@@ -43,7 +43,7 @@ namespace SalesEntry.Models
                     return;
                 }
                 var p = new Product(pi);
-
+                ProductId = pi;
                 ProductName = p.ProductName;
             }
         }
@@ -54,13 +54,13 @@ namespace SalesEntry.Models
             set { SetProperty(ref _productName, value); }
         }
 
-        public double Qty
+        public int Qty
         {
             get { return _qty; }
             set 
             { 
                 SetProperty(ref _qty, value);
-                Price = Qty * UnitPrice;
+                Price = (int)(Qty * UnitPrice);
             }
         }
         public int UnitId
@@ -75,12 +75,12 @@ namespace SalesEntry.Models
             set { SetProperty(ref _unitName, value); }
         }
 
-        public double UnitCost
+        public int UnitCost
         {
             get { return _unitCost; }
             set { SetProperty(ref _unitCost, value); }
         }
-        public double UnitPrice
+        public int UnitPrice
         {
             get { return _unitPrice; }
             set 
@@ -89,12 +89,12 @@ namespace SalesEntry.Models
                 Price = Qty * UnitPrice;
             }
         }
-        public double CatalogPrice
+        public int CatalogPrice
         {
             get { return _catalogPrice; }
             set { SetProperty(ref _catalogPrice, value); }
         }
-        public double Price
+        public int Price
         {
             get { return _price; }
             set { SetProperty(ref _price, value); }

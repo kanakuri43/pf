@@ -4,7 +4,7 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="Katekero" 
+        Title="" 
         TitleCharacterCasing="Normal"
         Height="600" Width="1000"
         ResizeMode="NoResize" 

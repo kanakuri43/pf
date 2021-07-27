@@ -73,7 +73,14 @@
                              Text="{Binding SlipNo, StringFormat={}{0:#}}" 
                              Grid.Column="1"
                              TextAlignment="Right"
-                             pf:UIElementBehavior.EnterCommand="True"/>
+                             pf:UIElementBehavior.EnterCommand="True">
+                        <TextBox.InputBindings>
+                            <KeyBinding Gesture="Enter" 
+                                            Command="{Binding SlipSearchCommand}" 
+                                            CommandParameter="{Binding ElementName=SlipNoTextBox}"/>
+                        </TextBox.InputBindings>
+
+                    </TextBox>
 
                     <TextBlock Text="伝票日付"
                                TextAlignment="Center"
@@ -211,7 +218,6 @@
                                    HeadersVisibility="All"
                                    RowHeaderWidth="30"
                                    VerticalScrollBarVisibility="Disabled"
-                                   Height="264"
                                    HorizontalAlignment="Left"
                                    ClipboardCopyMode="ExcludeHeader">
                     <DataGrid.ColumnHeaderStyle>
@@ -469,14 +475,24 @@
                         Style="{DynamicResource MahApps.Styles.Button.Square}" 
                         BorderThickness="1"/>
                 <Button Content="登録" 
-                        Command="{Binding EntryCommand}"
+                        Command="{Binding RegistCommand}"
                         Width="90" 
                         BorderThickness="1"
                         Margin="10,0,0,0"
                         Style="{DynamicResource MahApps.Styles.Button.Square}" />
                 <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
-                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
-                <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="削除"                         
+                        Command="{Binding DeleteCommand}"
+                        Width="90" 
+                        BorderThickness="1"
+                        Style="{DynamicResource MahApps.Styles.Button.Square}" />
+
+                <Button Content="キャンセル" 
+                        Command="{Binding CancelCommand}"
+                        Width="90" 
+                        BorderThickness="1"
+                        Style="{DynamicResource MahApps.Styles.Button.Square}" />
+
                 <Button Content="終了" 
                         Width="90" 
                         BorderThickness="1"
