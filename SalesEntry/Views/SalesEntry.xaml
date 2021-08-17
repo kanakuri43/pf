@@ -345,7 +345,8 @@
                                    Grid.Column="0" 
                                    TextAlignment="Center"/>
                         <StackPanel Orientation="Horizontal"
-                                    Grid.Column="1">
+                                    Grid.Column="1"
+                                    Background="White">
                             <CheckBox Content="納品書" 
                                       Margin="10,0,0,0"
                                       IsChecked="True"/>
@@ -466,8 +467,17 @@
         <Grid Background="RoyalBlue" 
               Grid.Row="2" >
             <StackPanel Orientation="Horizontal">
-                <Button Content="前伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
-                <Button Content="次伝票" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
+                <Button Content="前伝票" 
+                        Command="{Binding PrevSlipCommand}"
+                        CommandParameter="{Binding ElementName=SlipNoTextBox}"
+                    Width="90" 
+                        Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        BorderThickness="1"/>
+                <Button Content="次伝票" 
+                        Command="{Binding NextSlipCommand}"
+                        Width="90" 
+                        Style="{DynamicResource MahApps.Styles.Button.Square}" 
+                        BorderThickness="1"/>
                 <Button Content="" Width="90" Style="{DynamicResource MahApps.Styles.Button.Square}" BorderThickness="1"/>
                 <Button Content="印刷" 
                         Command="{Binding PrintCommand}"
