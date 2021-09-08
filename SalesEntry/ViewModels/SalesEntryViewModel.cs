@@ -31,6 +31,7 @@ namespace SalesEntry.ViewModels
         private int _total;
         private ObservableCollection<SalesDetail> _salesDetails = new ObservableCollection<SalesDetail>();
 
+
         public SalesEntryViewModel()
         {
             SlipSearchCommand = new DelegateCommand<TextBox>(SlipSearchCommandExecute);
@@ -42,11 +43,11 @@ namespace SalesEntry.ViewModels
             DeleteCommand = new DelegateCommand(DeleteCommandExecute);
             CancelCommand = new DelegateCommand(CancelCommandExecute);
 
-
+            MaxLineNum = 5;
 
             // 初期値表示
             InitScreen();
-            
+
 
         }
 
@@ -108,11 +109,7 @@ namespace SalesEntry.ViewModels
 
         public int Subtotal
         {
-            get 
-            {
-                return _subtotal; 
-            }
-            set { SetProperty(ref _subtotal, value); }
+            get => SalesDetails.Sum(x => x.Price);
         }
 
         public int SalesTax
@@ -122,21 +119,19 @@ namespace SalesEntry.ViewModels
         }
         public int Total
         {
-            get { return _total; }
-            set { SetProperty(ref _total, value); }
+            get => SalesDetails.Sum(x => x.Price);
         }
 
         public ObservableCollection<SalesDetail> SalesDetails
         {
             get { return _salesDetails; }
-            set 
+            set
             {
-                Subtotal = SalesDetails.Sum(x => ((int)x.UnitPrice * (int)x.Qty));
-                SetProperty(ref _salesDetails, value); 
+                SetProperty(ref _salesDetails, value);
             }
         }
 
-
+        public int MaxLineNum { get; set; }
 
 
         public DelegateCommand<TextBox> SlipSearchCommand { get; }
@@ -158,67 +153,7 @@ namespace SalesEntry.ViewModels
             }
             else
             {
-                var dc = new DatabaseController();
-                dc.SQL = "SELECT "
-                        + "  H.id h_id  "
-                        + "  , H.slip_no "
-                        + "  , H.slip_date "
-                        + "  , H.customer_id "
-                        + "  , H.staff_id "
-                        + "  , D.id d_id "
-                        + "  , D.line_no "
-                        + "  , D.product_id "
-                        + "  , D.qty "
-                        + "  , D.catalog_price "
-                        + "  , D.unit_price "
-                        + "  , D.unit_cost "
-                        + "  , D.line_sales_tax_price "
-                        + "  , D.line_include_sales_tax_price "
-                        + "  , customers.customer_code "
-                        + "  , customers.customer_name "
-                        + "  , customers.address1 "
-                        + "  , customers.address2 "
-                        + "  , products.product_code "
-                        + "  , products.product_name "
-                        + "FROM "
-                        + "  sales_header H "
-                        + "  LEFT JOIN sales_detail D "
-                        + "    ON H.slip_no = D.slip_no "
-                        + "    AND D.state = 0 "
-                        + "  LEFT JOIN customers  "
-                        + "    ON H.customer_id = customers.id "
-                        + "  LEFT JOIN products  "
-                        + "    ON D.product_id = products.id "
-                        + "WHERE "
-                        + "  H.state = 0 "
-                        + "  AND H.slip_no = " + slipNo.Text;
-
-                DataTable salesDataTable = dc.ReadAsDataTable();
-
-                // HEADER
-                SlipNo = (int)salesDataTable.Rows[0]["slip_no"];
-                SlipDate = (DateTime)salesDataTable.Rows[0]["slip_date"];
-                CustomerCode = salesDataTable.Rows[0]["customer_code"].ToString();
-                CustomerName = salesDataTable.Rows[0]["customer_name"].ToString();
-                SalesTaxRateId = 0;
-                ZipCode = "";
-                Address = salesDataTable.Rows[0]["address1"].ToString() + salesDataTable.Rows[0]["address2"].ToString();
-                Tel = "";
-
-                // DETAIL
-                SalesDetails.Clear();
-                foreach (DataRow dr in salesDataTable.Rows)
-                {
-                    var sd = new SalesDetail();
-                    sd.LineNo = (int)dr["line_no"];
-                    var p = new Product((int)dr["product_id"]);
-                    sd.ProductCode = dr["product_code"].ToString();
-                    sd.ProductName = dr["product_name"].ToString();
-                    sd.Qty = (int)dr["qty"];
-                    sd.UnitCost = (int)dr["unit_cost"];
-                    sd.UnitPrice = (int)dr["unit_price"];
-                    _salesDetails.Add(sd);
-                }
+                CallSlip(int.Parse(slipNo.Text));
             }
         }
         private void CustomerSearchCommandExecute(TextBox customerCode)
@@ -381,12 +316,13 @@ namespace SalesEntry.ViewModels
 
             // 明細データ作成
             SalesDetails.Clear();
-            for (var i = 0; i < 10; i++)
+            var list = new ObservableCollection<SalesDetail>();
+            for (var i = 0; i < MaxLineNum; i++)
             {
-                var sd = new SalesDetail();
-                sd.LineNo = i + 1;
-                _salesDetails.Add(sd);
+                list.Add(new SalesDetail(i, () => RaisePropertyChanged(nameof(Subtotal))));
             }
+            SalesDetails = list;
+
         }
         private void CallSlip(int slipNo)
         {
@@ -423,7 +359,10 @@ namespace SalesEntry.ViewModels
                     + "    ON D.product_id = products.id "
                     + "WHERE "
                     + "  H.state = 0 "
-                    + "  AND H.slip_no = " + slipNo;
+                    + "  AND H.slip_no = " + slipNo + " "
+                    + "ORDER BY "
+                    + "  line_no"
+                    ;
 
             DataTable salesDataTable = dc.ReadAsDataTable();
 
@@ -437,20 +376,21 @@ namespace SalesEntry.ViewModels
             Address = salesDataTable.Rows[0]["address1"].ToString() + salesDataTable.Rows[0]["address2"].ToString();
             Tel = "";
 
-            // DETAIL
+            // DETAIL            
             SalesDetails.Clear();
             foreach (DataRow dr in salesDataTable.Rows)
             {
-                var sd = new SalesDetail();
-                sd.LineNo = (int)dr["line_no"];
-                var p = new Product((int)dr["product_id"]);
+                var sd = new SalesDetail((int)dr["line_no"], () => RaisePropertyChanged(nameof(Subtotal)));
                 sd.ProductCode = dr["product_code"].ToString();
                 sd.ProductName = dr["product_name"].ToString();
                 sd.Qty = (int)dr["qty"];
                 sd.UnitCost = (int)dr["unit_cost"];
                 sd.UnitPrice = (int)dr["unit_price"];
-                _salesDetails.Add(sd);
+
+                SalesDetails.Add(sd);
+
             }
+
         }
 
     }

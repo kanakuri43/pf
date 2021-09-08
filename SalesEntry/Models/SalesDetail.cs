@@ -97,7 +97,19 @@ namespace SalesEntry.Models
         public int Price
         {
             get { return _price; }
-            set { SetProperty(ref _price, value); }
+            set
+            {
+                SetProperty(ref _price, value);
+                _priceChangedNotification?.Invoke();
+            }
+        }
+
+        private Action _priceChangedNotification = null;
+
+        public SalesDetail(int lineNo, Action priceChangedNotification = null)
+        {
+            LineNo = lineNo;
+            _priceChangedNotification = priceChangedNotification;
         }
 
     }

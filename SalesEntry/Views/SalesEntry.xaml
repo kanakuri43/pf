@@ -433,7 +433,7 @@
                                VerticalAlignment="Center" />
                     <TextBox Grid.Row="0"
                                Grid.Column="3" 
-                               Text="{Binding Subtotal}" 
+                               Text="{Binding Subtotal, Mode=OneWay}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
 
@@ -455,7 +455,7 @@
                                Grid.Column="2"/>
                     <TextBox   Grid.Row="2" 
                                Grid.Column="3" 
-                               Text="{Binding Total}" 
+                               Text="{Binding Total, Mode=OneWay}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
 
