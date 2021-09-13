@@ -370,8 +370,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <Border Background="AliceBlue"
@@ -391,48 +389,13 @@
                             BorderThickness="0,0,0,1"/>
 
 
-                    <TextBlock Text="売価"  
+                    <TextBlock Text="小計"  
                                Grid.Row="0" 
                                Grid.Column="0" 
                                TextAlignment="Center"
                                VerticalAlignment="Center" />
                     <TextBox Grid.Row="0"
                                Grid.Column="1" 
-                               Text="1,000" 
-                               BorderThickness="0,0,0,1"
-                               TextAlignment="Right"/>
-
-
-                    <TextBlock Text="原価" 
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"
-                               Grid.Row="1" 
-                               Grid.Column="0"/>
-                    <TextBox Grid.Row="1" 
-                               Grid.Column="1" 
-                               Text="100" 
-                               BorderThickness="0,0,0,1"
-                               TextAlignment="Right"/>
-
-                    <TextBlock Text="粗利" 
-                               VerticalAlignment="Center"
-                               TextAlignment="Center"
-                               Grid.Row="2" 
-                               Grid.Column="0"/>
-                    <TextBox   Grid.Row="2" 
-                               Grid.Column="1" 
-                               Text="1,100" 
-                               BorderThickness="0,0,0,1"
-                               TextAlignment="Right"/>
-
-
-                    <TextBlock Text="小計"  
-                               Grid.Row="0" 
-                               Grid.Column="2" 
-                               TextAlignment="Center"
-                               VerticalAlignment="Center" />
-                    <TextBox Grid.Row="0"
-                               Grid.Column="3" 
                                Text="{Binding Subtotal, Mode=OneWay}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
@@ -441,9 +404,9 @@
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Grid.Row="1" 
-                               Grid.Column="2"/>
+                               Grid.Column="0"/>
                     <TextBox Grid.Row="1" 
-                               Grid.Column="3" 
+                               Grid.Column="1" 
                                Text="{Binding SalesTax}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>
@@ -452,9 +415,9 @@
                                VerticalAlignment="Center"
                                TextAlignment="Center"
                                Grid.Row="2" 
-                               Grid.Column="2"/>
+                               Grid.Column="0"/>
                     <TextBox   Grid.Row="2" 
-                               Grid.Column="3" 
+                               Grid.Column="1" 
                                Text="{Binding Total, Mode=OneWay}" 
                                BorderThickness="0,0,0,1"
                                TextAlignment="Right"/>

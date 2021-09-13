@@ -10,6 +10,10 @@ using SalesEntry.Models;
 using pf.Models;
 using System.Windows;
 using System.Windows.Controls;
+using System.Printing;
+using System.Windows.Documents;
+using System.Windows.Markup;
+using SalesEntry.Views;
 
 namespace SalesEntry.ViewModels
 {
@@ -278,6 +282,31 @@ namespace SalesEntry.ViewModels
         private void PrintCommandExecute()
         {
             // 印刷
+            try
+            {
+                SalesSlipViewModel ssvm = new SalesSlipViewModel();
+
+                FixedDocument fixedDocument = new FixedDocument();
+
+                SalesSlip page = new SalesSlip();
+                page.DataContext = ssvm;
+                FixedPage fixedPage = new FixedPage();
+                fixedPage.Children.Add(page); //UserControlを追加
+                PageContent pc = new PageContent();
+                ((IAddChild)pc).AddChild(fixedPage);
+                fixedDocument.Pages.Add(pc);
+
+                var printServer = new LocalPrintServer();
+                var queue = printServer.DefaultPrintQueue;
+                var writer = PrintQueue.CreateXpsDocumentWriter(queue);
+                writer.Write(fixedDocument);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "通知");
+            }
+
         }
 
         private void RegistCommandExecute()

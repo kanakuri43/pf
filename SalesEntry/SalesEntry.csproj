@@ -39,6 +39,7 @@
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,8 +62,12 @@
     <Compile Include="Models\SalesEntryModel.cs" />
     <Compile Include="ViewModels\CustomerSerchViewModel.cs" />
     <Compile Include="ViewModels\SalesEntryViewModel.cs" />
+    <Compile Include="ViewModels\SalesSlipViewModel.cs" />
     <Compile Include="Views\SalesEntry.xaml.cs">
       <DependentUpon>SalesEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalesSlip.xaml.cs">
+      <DependentUpon>SalesSlip.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +83,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\SalesEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalesSlip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
