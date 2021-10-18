@@ -49,6 +49,10 @@
       "frameworks": {
         "net472": {
           "dependencies": {
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.31, )"
+            },
             "Prism.Unity": {
               "target": "Package",
               "version": "[8.0.0.1909, )"
@@ -113,6 +117,10 @@
             "MahApps.Metro": {
               "target": "Package",
               "version": "[2.4.4, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.37, )"
             },
             "Prism.Unity": {
               "target": "Package",

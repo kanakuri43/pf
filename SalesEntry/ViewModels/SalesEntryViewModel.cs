@@ -226,11 +226,7 @@ namespace SalesEntry.ViewModels
                 }
 
                 IDataReader dr = dc.ReadAsDataReader();
-                if (dr == null)
-                {
-                    return;
-                }
-                else
+                if (dr != null)
                 {
                     dr.Read();
                     CallSlip((int)dr[0]);
@@ -250,6 +246,10 @@ namespace SalesEntry.ViewModels
             try
             {
                 var dc = new DatabaseController();
+                if (SlipNo == 0)
+                {
+                    return;
+                }
                 dc.SQL = "SELECT "
                         + "  slip_no "
                         + " FROM "
@@ -262,11 +262,7 @@ namespace SalesEntry.ViewModels
                         + " LIMIT 1";
 
                 IDataReader dr = dc.ReadAsDataReader();
-                if (dr == null)
-                {
-                    return;
-                }
-                else
+                if (dr != null)
                 {
                     dr.Read();
                     CallSlip((int)dr[0]);
@@ -330,7 +326,6 @@ namespace SalesEntry.ViewModels
             // キャンセル
             InitScreen();
         }
-
         private void InitScreen()
         {
             SlipNo = 0;

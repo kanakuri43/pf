@@ -1,17 +1,93 @@
 ﻿<UserControl x:Class="SalesEntry.Views.SalesSlip"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:prism="http://prismlibrary.com/"      
+             Height="29.7cm" Width="21cm" Background="White"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Border Background="White"
-                Grid.RowSpan="10"/>
-        <TextBlock Text="納品書" />
+        <Grid Grid.Row="1"
+              Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <Border 
+                BorderThickness="1"
+                BorderBrush="Gray"
+
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="3"/>
+            
+            <!--Header-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    Grid.Column="0" 
+                    Orientation="Vertical"
+                    Margin="20">
+                    <TextBlock Text="〒 990-8668"/>
+                    <TextBlock Text="山形市流通センター １－９－２"/>
+                    <TextBlock Text=""/>
+                    <TextBlock 
+                        Text="オビサン株式会社 御中"
+                        FontSize="16"
+                        FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel 
+                    Grid.Column="1" 
+                    Orientation="Vertical">
+                    
+                    <TextBlock 
+                        TextAlignment="Center"
+                        Text="納品書"
+                        FontSize="24"
+                        FontWeight="Bold"/>
+
+                    <Border BorderThickness="1"
+                            BorderBrush="Black"/>
+
+                    <TextBlock Text="{Binding SlipDate}"/>
+
+                </StackPanel>
+                <StackPanel 
+                    Grid.Column="2"
+                    Height="20"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+                    
+                    <TextBlock Text="伝票No."/>
+                    <TextBox Text="{Binding SlipNo}"/>
+
+                </StackPanel>
+            </Grid>
+            
+            <!--Detail-->
+            <Grid Grid.Row="1">
+                <DataGrid>
+                    
+                </DataGrid>
+
+            </Grid>
+            
+            <!--Footer-->
+            <Grid Grid.Row="2">
+                <TextBlock Text="摘要"/>
+
+            </Grid>
+        </Grid>
+
 
     </Grid>
 </UserControl>

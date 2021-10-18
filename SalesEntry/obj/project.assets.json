@@ -39,7 +39,7 @@
           }
         }
       },
-      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.37": {
         "type": "package",
         "frameworkAssemblies": [
           "PresentationCore",
@@ -154,6 +154,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
           "Prism.Unity": "8.0.0.1909"
         },
         "compile": {
@@ -202,7 +203,7 @@
           }
         }
       },
-      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.37": {
         "type": "package",
         "frameworkAssemblies": [
           "PresentationCore",
@@ -317,6 +318,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
           "Prism.Unity": "8.0.0.1909"
         },
         "compile": {
@@ -365,7 +367,7 @@
           }
         }
       },
-      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.37": {
         "type": "package",
         "frameworkAssemblies": [
           "PresentationCore",
@@ -480,6 +482,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
           "Prism.Unity": "8.0.0.1909"
         },
         "compile": {
@@ -528,7 +531,7 @@
           }
         }
       },
-      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.37": {
         "type": "package",
         "frameworkAssemblies": [
           "PresentationCore",
@@ -643,6 +646,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.31",
           "Prism.Unity": "8.0.0.1909"
         },
         "compile": {
@@ -713,10 +717,10 @@
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
-    "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
-      "sha512": "5sPWkbqImc2t1aQwIfJcKsUo7tOg1Tr8+6xVzZJB56Nzt4u9NlpcLofgdX/aRYpPKdWDA3U23Akw1KQzU5e82g==",
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.37": {
+      "sha512": "TxH7g5I/4UzOHfs0GqD1W4evdl7DIHOQCr/KWc4G4BkgtsAhaHHXAW5JbKrkB7cqClN0JYOX6j9/4v4emCjFIA==",
       "type": "package",
-      "path": "microsoft.xaml.behaviors.wpf/1.1.19",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.37",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -725,11 +729,15 @@
         "lib/net45/Microsoft.Xaml.Behaviors.dll",
         "lib/net45/Microsoft.Xaml.Behaviors.pdb",
         "lib/net45/Microsoft.Xaml.Behaviors.xml",
-        "lib/netcoreapp3.0/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
-        "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.dll",
-        "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.pdb",
-        "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.xml",
-        "microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+        "lib/net5.0-windows7.0/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.xml",
+        "lib/netcoreapp3.1/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.pdb",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.xml",
+        "microsoft.xaml.behaviors.wpf.1.1.37.nupkg.sha512",
         "microsoft.xaml.behaviors.wpf.nuspec",
         "tools/Install.ps1"
       ]
@@ -943,6 +951,7 @@
     ".NETFramework,Version=v4.7.2": [
       "CustomControls >= 1.0.0",
       "MahApps.Metro >= 2.4.4",
+      "Microsoft.Xaml.Behaviors.Wpf >= 1.1.37",
       "Prism.Unity >= 8.0.0.1909",
       "pf >= 1.0.0"
     ]
@@ -996,6 +1005,10 @@
           "MahApps.Metro": {
             "target": "Package",
             "version": "[2.4.4, )"
+          },
+          "Microsoft.Xaml.Behaviors.Wpf": {
+            "target": "Package",
+            "version": "[1.1.37, )"
           },
           "Prism.Unity": {
             "target": "Package",

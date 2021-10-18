@@ -10,7 +10,10 @@ namespace SalesEntry.ViewModels
     {
         public SalesSlipViewModel()
         {
-
+            SlipNo = 12345;
+            SlipDate = DateTime.Today;
         }
+        public int SlipNo { get; set; }
+        public DateTime SlipDate { get; set; }
     }
 }
