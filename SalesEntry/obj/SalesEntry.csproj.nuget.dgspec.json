@@ -116,7 +116,7 @@
           "dependencies": {
             "MahApps.Metro": {
               "target": "Package",
-              "version": "[2.4.4, )"
+              "version": "[2.4.9, )"
             },
             "Microsoft.Xaml.Behaviors.Wpf": {
               "target": "Package",
@@ -124,7 +124,7 @@
             },
             "Prism.Unity": {
               "target": "Package",
-              "version": "[8.0.0.1909, )"
+              "version": "[8.1.97, )"
             }
           }
         }

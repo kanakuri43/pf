@@ -21,13 +21,6 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
         </Grid>
-        <TextBlock Text="売上登録" 
-                   Grid.Column="0"
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   FontSize="16"
-                   Margin="10,0,0,0"/>
-
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

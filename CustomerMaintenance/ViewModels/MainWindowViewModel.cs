@@ -1,14 +1,13 @@
 ﻿using Prism.Mvvm;
-using Prism.Commands;
 using Prism.Regions;
 
-namespace SalesEntry.ViewModels
+namespace CustomerMaintenance.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
         private readonly IRegionManager _regionManager;
 
-        private string _title = "売上登録";
+        private string _title = "得意先登録";
         public string Title
         {
             get { return _title; }
@@ -18,7 +17,7 @@ namespace SalesEntry.ViewModels
         public MainWindowViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Views.SalesEntry));
+            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(Views.CustomerMaintenance));
         }
     }
 }
